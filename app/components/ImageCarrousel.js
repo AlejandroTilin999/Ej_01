@@ -1,6 +1,8 @@
 const ImageCarrousel = () => {
     return (
-        <img src="/img/image.png" alt="Icono" className="w-30 h-30" />
+        <>
+            <img src="/img/image.png" alt="Icono" className="h-48 w-96 object-cover" />
+        </>
     );
 }
 
