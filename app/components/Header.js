@@ -1,13 +1,13 @@
-'use client';
-import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import '@/globals.css';
+'use client'
+import { useState } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => setIsOpen(!isOpen)
 
   return (
     <nav className="fixed w-full bg-white shadow-md z-50">
@@ -60,7 +60,7 @@ const Navbar = () => {
         {isOpen ? '✖️' : '☰'}
       </button>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar 
