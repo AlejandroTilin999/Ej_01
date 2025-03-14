@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="bg-[var(--color-primary)] text-white py-10 px-6 md:px-20 w-full mt-auto">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {/* Logo y frase */}
+
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
           <Image src="/img/navbar/GoMichoacan.png" alt="Go Michoacán" width={200} height={80} />
           <p className="mt-2 text-sm">"Conoce, vive y siente la esencia de Michoacán."</p>
@@ -21,7 +21,6 @@ const Footer = () => {
           </div>
         </div>
         
-        {/* Enlaces */}
         <div className="text-center md:text-left">
           <p className="font-bold mb-2">Enlaces</p>
           <ul className="space-y-1 text-sm">
@@ -33,7 +32,6 @@ const Footer = () => {
           </ul>
         </div>
         
-        {/* Contacto */}
         <div className="text-center md:text-left">
           <p className="font-bold mb-2">Contacto</p>
           <p className="text-sm flex items-center justify-center md:justify-start gap-2"><span>📱</span> +52 000 0000</p>
@@ -41,14 +39,13 @@ const Footer = () => {
         </div>
       </div>
       
-      {/* Línea inferior */}
       <div className="border-t border-gray-500 mt-8 pt-4 text-center text-sm flex flex-col sm:flex-row justify-center sm:justify-between max-w-7xl mx-auto">
         <p><Link href="/#" className="hover:text-gray-300">Términos y Condiciones</Link></p>
         <p><Link href="/#" className="hover:text-gray-300">Privacidad</Link></p>
         <p>© 2025 GoMichoacán</p>
       </div>
     </footer>
-  );
-};
+  )
+}
 
 export default Footer
