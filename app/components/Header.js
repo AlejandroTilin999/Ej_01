@@ -14,7 +14,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
    
         <Link href="/" className="flex items-center">
-          <Image src="/img/navbar/GoMichoacan.png" alt="GoMichoacán" width={130} height={40} />
+          <Image src="/img/imagenNavbar/GoMichoacan.png" alt="GoMichoacán" width={130} height={40} />
         </Link>
 
         <ul className="hidden lg:flex items-center space-x-10 ml-1 text-[var(--color-primary)] font-semibold text-lg">

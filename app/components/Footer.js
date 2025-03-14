@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <Image src="/img/navbar/GoMichoacan.png" alt="Go Michoacán" width={200} height={80} />
+          <Image src="/img/imagenFooter/GoMichoacan.png" alt="Go Michoacán" width={200} height={80} />
           <p className="mt-2 text-sm">"Conoce, vive y siente la esencia de Michoacán."</p>
           <div className="mt-4">
             <p className="font-semibold">Síguenos</p>
