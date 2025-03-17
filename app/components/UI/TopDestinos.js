@@ -11,25 +11,25 @@ const TopDestinos = () => {
   ]
 
   return (
-    <section className="py-12">
+    <section className="py-12 bg-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
-        <h2 className="text-3xl font-bold mb-2 md:mb-4">Top Destinos</h2>
-        <div className="w-60 h-[5px] mb-6"></div>
+        <h2 className="text-3xl font-bold text-gray-800 mb-2 md:mb-4">Top Destinos</h2>
+        <div className="w-60 h-[5px] bg-primary mb-6"></div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {destinos.map((item, index) => (
             <div 
               key={index} 
-              className="relative overflow-hidden rounded-xl group border"
+              className="relative overflow-hidden rounded-xl group transition-all duration-500 shadow-xl border border-gray-200 hover:shadow-2xl hover:scale-[1.03]"
             >
               <img 
                 src={item.src} 
                 alt={item.titulo} 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-hover:blur-sm"
               />
 
-              <div className="absolute inset-0 flex flex-col items-center justify-end pb-6">
-                <h3 className="text-lg md:text-xl font-bold text-center px-6">
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-end pb-6">
+                <h3 className="text-white text-lg md:text-xl font-bold text-center px-6 transition-all duration-500 transform translate-y-10 group-hover:translate-y-0 group-hover:scale-110">
                   {item.titulo}
                 </h3>
               </div>
