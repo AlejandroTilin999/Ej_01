@@ -12,24 +12,20 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolling(true)
-      } else {
-        setScrolling(false)
-      }
+      setScrolling(window.scrollY > 50)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolling ? 'bg-white/90 shadow-md' : 'bg-white/20'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolling ? 'bg-white/90 shadow-md' : 'bg-white/20'}`}>
       <Container className="flex items-center justify-between py-4">
         <Link href="/" className="flex items-center cursor-pointer">
-          <img src="/img/imagesGoMich/GoMichoacan.png" alt="GoMichoacán" width="130" height="40" className="cursor-pointer" />
+          <img src="/img/imagesGoMich/GoMichoacan.png" alt="GoMichoacán" className="w-[120px] md:w-[140px] lg:w-[160px]" />
         </Link>
 
-        <ul className="hidden md:flex items-center space-x-6 text-primary font-semibold text-lg md:text-base sm:text-sm text-shadow">
+        <ul className="hidden md:flex items-center space-x-6 text-primary font-semibold text-lg md:text-base sm:text-sm">
           <li><Link href="#" className="cursor-pointer">Restaurantes</Link></li>
           <li><Link href="#" className="cursor-pointer">Alojamientos</Link></li>
           <li><Link href="#" className="cursor-pointer">Actividades</Link></li>
@@ -38,8 +34,12 @@ const Navbar = () => {
         </ul>
 
         <div className="hidden md:flex items-center gap-3">
-          <button className="bg-accent text-white px-4 py-1.5 rounded-md shadow hover:opacity-85 cursor-pointer">Inicia Sesión</button>
-          <button className="bg-secondary text-white px-4 py-1.5 rounded-md shadow hover:opacity-85 cursor-pointer">Anúnciate</button>
+          <button className="bg-accent text-white px-4 py-1.5 rounded-md shadow hover:opacity-85 cursor-pointer text-sm md:text-base">
+            Inicia Sesión
+          </button>
+          <button className="bg-secondary text-white px-4 py-1.5 rounded-md shadow hover:opacity-85 cursor-pointer text-sm md:text-base">
+            Anúnciate
+          </button>
         </div>
 
         <button className="md:hidden text-3xl transition-transform duration-300 cursor-pointer" onClick={toggleMenu}>
