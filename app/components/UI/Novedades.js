@@ -14,13 +14,13 @@ const Novedades = () => {
     <section className="py-12 bg-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
         <h2 className="text-3xl font-bold text-gray-800 mb-2 md:mb-4">Novedades</h2>
-        <div className="w-60 h-[5px] bg-red-400 mb-6"></div>
+        <div className="w-50 h-[5px] bg-red-400 mb-6"></div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 ">
           {novedades.map((item, index) => (
             <div 
               key={index} 
-              className={`relative overflow-hidden rounded-lg group transition-all duration-500 shadow-lg hover:shadow-[0px_0px_20px_5px_rgba(28,52,88,0.7)] ${
+              className={`relative overflow-hidden rounded-lg group transition-all duration-500 shadow-sm hover:shadow-[0px_4px_10px_rgba(28,52,88,0.15) ] ${
                 index === 0 || index === 5 ? "md:col-span-2 md:row-span-1" : 
                 index === 3 ? "md:col-span-1 md:row-span-1" : 
                 "md:col-span-1 md:row-span-1"
@@ -32,7 +32,7 @@ const Novedades = () => {
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               
-              <div className="absolute inset-0 bg-primary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-primary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 cursor-pointer"></div>
 
               <div className="absolute bottom-0 left-0 w-full p-4 bg-primary/70 text-white text-center opacity-0 group-hover:opacity-100 transform translate-y-10 group-hover:translate-y-0 transition-all duration-500">
                 <h3 className="text-lg font-semibold">{item.titulo}</h3>
