@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 
-const experiencias = [
+const pueblos = [
   { src: "/img/imagesGoMich/Fondo.jpg", titulo: "Morelia", descripcion: "La capital de Michoacán" },
   { src: "/img/imagesGoMich/Fondo.webp", titulo: "Pátzcuaro", descripcion: "Un pueblo mágico lleno de historia" },
   { src: "/img/imagesGoMich/mich.webp", titulo: "Uruapan", descripcion: "Cuna del aguacate y la naturaleza" },
@@ -11,7 +11,7 @@ const experiencias = [
   { src: "/img/imagesGoMich/mich.webp", titulo: "Tzintzuntzan", descripcion: "Ruinas purépechas y cultura" }
 ]
 
-const ExperienciasUnicas = () => {
+const PueblosMagicos = () => {
   const [startIndex, setStartIndex] = useState(0)
   const [itemsPerView, setItemsPerView] = useState(4)
 
@@ -32,11 +32,11 @@ const ExperienciasUnicas = () => {
   }, [])
 
   const prevSlide = () => {
-    setStartIndex(prevIndex => (prevIndex === 0 ? experiencias.length - itemsPerView : prevIndex - 1))
+    setStartIndex(prevIndex => (prevIndex === 0 ? pueblos.length - itemsPerView : prevIndex - 1))
   }
 
   const nextSlide = () => {
-    setStartIndex(prevIndex => (prevIndex + 1 >= experiencias.length - (itemsPerView - 1) ? 0 : prevIndex + 1))
+    setStartIndex(prevIndex => (prevIndex + 1 >= pueblos.length - (itemsPerView - 1) ? 0 : prevIndex + 1))
   }
 
   return (
@@ -58,17 +58,17 @@ const ExperienciasUnicas = () => {
               className="flex transition-transform duration-700 ease-in-out" 
               style={{ transform: `translateX(-${startIndex * (100 / itemsPerView)}%)` }}
             >
-              {experiencias.map((item, index) => (
+              {pueblos.map((item, index) => (
                 <div key={index} className="min-w-[50%] sm:min-w-[33.33%] lg:min-w-[25%] px-2">
-                  <div className="relative overflow-hidden rounded-xl shadow-md group">
+                  <div className="relative overflow-hidden rounded-xl shadow-md group cursor-pointer">
                     <img 
                       src={item.src} 
                       alt={item.titulo} 
                       className="w-full h-[280px] sm:h-[300px] lg:h-[320px] object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    {/* Fondo degradado para el texto */}
-                    <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-black/70 to-transparent"></div>
-                    <div className="absolute bottom-4 left-4 text-white">
+                   
+                    <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-black/70 to-transparent cursor-pointer"></div>
+                    <div className="absolute bottom-4 left-4 text-white cursor-pointer">
                       <h3 className="text-lg font-bold">{item.titulo}</h3>
                       <p className="text-sm opacity-80">{item.descripcion}</p>
                     </div>
@@ -80,7 +80,7 @@ const ExperienciasUnicas = () => {
 
           <button 
             onClick={nextSlide} 
-            className="absolute right-0 sm:right-[-2rem] z-10 bg-primary text-white p-3 rounded-full hover:scale-110 transition-all"
+            className="absolute right-0 sm:right-[-2rem] z-10 bg-primary text-white p-3 rounded-full hover:scale-110 transition-all cursor-pointer"
           >
             ❯
           </button>
@@ -90,4 +90,4 @@ const ExperienciasUnicas = () => {
   )
 }
 
-export default ExperienciasUnicas
+export default PueblosMagicos

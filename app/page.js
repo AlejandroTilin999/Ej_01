@@ -2,7 +2,7 @@ import HeroSection from "@/components/UI/HeroSection"
 import Novedades from "./components/UI/Novedades"
 import TopDestinos from "./components/UI/TopDestinos.js"
 import Eventos from "./components/UI/Eventos"
-import ExperienciasUnicas from "./components/UI/ExperienciasUnicas"
+import PueblosMagicos from "./components/UI/PueblosMagicos"
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
       <Novedades />
       <TopDestinos />
       <Eventos />
-      <ExperienciasUnicas />
+      <PueblosMagicos />
     </>
   )
 }
