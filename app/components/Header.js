@@ -67,8 +67,8 @@ const Navbar = () => {
           </ul>
 
           <div className="flex flex-col gap-3 px-6 py-4 items-center">
-            <button className="bg-accent text-white px-4 py-2 rounded-lg shadow hover:opacity-85 cursor-pointer w-full transition-opacity duration-300">Inicia Sesión</button>
-            <button className="bg-secondary text-white px-4 py-2 rounded-lg shadow hover:opacity-85 cursor-pointer w-full transition-opacity duration-300">Anúnciate</button>
+            <button className="bg-accent text-white px-4 py-2 rounded-lg shadow hover:opacity-85 cursor-pointer transition-opacity duration-300 w-[150px] mx-auto md:w-full md:mx-0">Inicia Sesión</button>
+            <button className="bg-secondary text-white px-4 py-2 rounded-lg shadow hover:opacity-85 cursor-pointer transition-opacity duration-300 w-[150px] mx-auto md:w-full md:mx-0" >Anúnciate</button>
           </div>
         </div>
       </Container>

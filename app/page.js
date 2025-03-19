@@ -1,6 +1,7 @@
 import HeroSection from "@/components/UI/HeroSection"
 import Novedades from "./components/UI/Novedades"
 import TopDestinos from "./components/UI/TopDestinos.js"
+import Eventos from "./components/UI/Eventos"
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <HeroSection />
       <Novedades />
       <TopDestinos />
+      <Eventos />
     </>
   )
 }
