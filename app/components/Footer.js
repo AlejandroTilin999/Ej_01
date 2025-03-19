@@ -52,11 +52,11 @@ const Footer = () => {
           <p className="font-bold mb-2">Contacto</p>
           <div className="text-sm flex flex-col items-center md:items-start gap-2">
             <p className="flex items-center gap-2 cursor-pointer">
-              <img src="/img/svg/globe.svg" alt="Phone" className="w-5 h-5" />
+              <img src="/img/svg/phone-flip-svgrepo-com.svg" alt="Phone" className="w-5 h-5" />
               +52 000 0000
             </p>
             <p className="flex items-center gap-2 cursor-pointer">
-              <img src="/img/svg/file.svg" alt="Email" className="w-5 h-5" />
+              <img src="/img/svg/gmail-svgrepo-com.svg" alt="Email" className="w-5 h-5" />
               gomich@gmail.com
             </p>
           </div>

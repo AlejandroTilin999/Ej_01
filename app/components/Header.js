@@ -34,10 +34,10 @@ const Navbar = () => {
         </ul>
 
         <div className="hidden lg:flex items-center gap-3">
-          <button className="bg-accent text-white px-4 py-1.5 rounded-md shadow hover:opacity-85 transition-opacity duration-300 cursor-pointer text-sm md:text-base">
+          <button className="bg-accent text-white px-4 py-1.5 rounded-md shadow hover:opacity-90 transition-opacity duration-300 cursor-pointer text-sm md:text-base">
             Inicia Sesión
           </button>
-          <button className="bg-secondary text-white px-4 py-1.5 rounded-md shadow hover:opacity-85 transition-opacity duration-300 cursor-pointer text-sm md:text-base">
+          <button className="bg-secondary text-white px-4 py-1.5 rounded-md shadow hover:opacity-90 transition-opacity duration-300 cursor-pointer text-sm md:text-base">
             Anúnciate
           </button>
         </div>
