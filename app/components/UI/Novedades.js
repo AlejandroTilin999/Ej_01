@@ -14,7 +14,7 @@ const Novedades = () => {
     <section className="py-12 bg-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
         <h2 className="text-3xl font-bold text-gray-800 mb-2 md:mb-4">Novedades</h2>
-        <div className="w-50 h-[5px] bg-red-400 mb-6"></div>
+        <div className="w-50 h-[5px] bg-secondary mb-6"></div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 ">
           {novedades.map((item, index) => (
