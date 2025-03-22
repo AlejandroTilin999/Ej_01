@@ -1,5 +1,7 @@
 'use client'
 
+import TiktokIcon from '@/assets/icons/TiktokIcon'
+
 import Link from 'next/link'
 import Container from '@/components/ui/Container'
 
@@ -21,7 +23,7 @@ const Footer = () => {
               <img src="/img/svg/instagram-svgrepo-comB.svg" alt="Instagram" className="w-6 h-6" />
             </Link>
             <Link href="#" className="hover:text-gray-300 cursor-pointer">
-              <img src="/img/svg/tiktok-svgrepo-comB.svg" alt="TikTok" className="w-6 h-6" />
+              <TiktokIcon stroke="#fff" />
             </Link>
           </div>
         </div>
