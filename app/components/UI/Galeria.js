@@ -24,16 +24,14 @@ const Galeria = () => {
           {galeria.map((item, index) => (
             <div 
               key={index} 
-              className="relative overflow-hidden rounded-lg group transition-all duration-500 shadow-sm hover:scale-105"
+              className="relative overflow-hidden rounded-lg group transition-all duration-500 shadow-sm hover:scale-105 cursor-pointer"
             >
-              {/* Imagen */}
               <img 
                 src={item.src} 
                 alt={item.titulo} 
                 className="w-full h-[140px] sm:h-[180px] lg:h-[200px] object-cover transition-transform duration-500 group-hover:scale-110"
               />
 
-              {/* Capa con efecto de hover (color accent) */}
               <div className="absolute inset-0 flex items-center justify-center text-white text-lg font-semibold bg-accent opacity-0 group-hover:opacity-80 transition-all duration-500">
                 {item.titulo}
               </div>
