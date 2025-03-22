@@ -16,7 +16,6 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Go Michoacán - Respira Michoacán",
   description: "Plataforma turística enfocada en hacerte sentir y vivir la esencia de Michoacán.",
-  viewport: 'width=device-width, initial-scale=1.0',
   icons: {
     icon: "/favicon.svg"
   },

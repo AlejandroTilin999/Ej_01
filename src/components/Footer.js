@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import Container from '@/components/UI/Container'
+import Container from '@/components/ui/Container'
 
 const Footer = () => {
   return (
