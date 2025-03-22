@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Container from '@/components/UI/Container'
+import Container from '@/components/ui/Container'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -25,12 +25,12 @@ const Navbar = () => {
           <img src="/img/imagesGoMich/GoMichoacan.png" alt="GoMichoacán" className="w-[120px] md:w-[140px] lg:w-[160px]" />
         </Link>
 
-        <ul className="hidden lg:flex items-center space-x-6 text-primary font-semibold text-lg md:text-base sm:text-sm">
-          <li><Link href="#" className="cursor-pointer hover:text-secondary transition-colors duration-300">Restaurantes</Link></li>
-          <li><Link href="#" className="cursor-pointer hover:text-secondary transition-colors duration-300">Alojamientos</Link></li>
-          <li><Link href="#" className="cursor-pointer hover:text-secondary transition-colors duration-300">Actividades</Link></li>
-          <li><Link href="#" className="cursor-pointer hover:text-secondary transition-colors duration-300">Municipios</Link></li>
-          <li><Link href="#" className="cursor-pointer hover:text-secondary transition-colors duration-300">Blog</Link></li>
+        <ul className="hidden lg:flex items-center space-x-6 text-white font-semibold text-lg md:text-base sm:text-sm">
+          <li><Link href="#" className="cursor-pointer hover:text-primary transition-colors duration-300">Restaurantes</Link></li>
+          <li><Link href="#" className="cursor-pointer hover:text-primary transition-colors duration-300">Alojamientos</Link></li>
+          <li><Link href="#" className="cursor-pointer hover:text-primary transition-colors duration-300">Actividades</Link></li>
+          <li><Link href="#" className="cursor-pointer hover:text-primary transition-colors duration-300">Municipios</Link></li>
+          <li><Link href="#" className="cursor-pointer hover:text-primary transition-colors duration-300">Blog</Link></li>
         </ul>
 
         <div className="hidden lg:flex items-center gap-3">

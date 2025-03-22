@@ -1,6 +1,6 @@
 'use client'
 
-import Container from '@/components/UI/Container'
+import Container from '@/components/ui/Container'
 
 const HeroSection = () => {
   return (
@@ -12,7 +12,7 @@ const HeroSection = () => {
           alt="Fondo Michoacán"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-white/50"></div>
+        <div className="absolute inset-0 bg-black/20"></div>
       </div>
 
       <Container className="relative z-10 flex flex-col items-center justify-center">
