@@ -4,6 +4,10 @@ import TiktokIcon from '@/assets/icons/TiktokIcon'
 
 import Link from 'next/link'
 import Container from '@/components/ui/Container'
+import FacebookIcon from '@/assets/icons/FacebookIcon'
+import InstagramIcon from '@/assets/icons/InstagramIcon'
+import MailIcon from '@/assets/icons/MailIcon'
+import PhoneIcon from '@/assets/icons/PhoneIcon'
 
 const Footer = () => {
   return (
@@ -16,12 +20,15 @@ const Footer = () => {
 
           <p className="font-bold mt-4">Síguenos</p>
           <div className="flex justify-center md:justify-start gap-4 text-lg mt-2">
+
             <Link href="#" className="hover:text-gray-300 cursor-pointer">
-              <img src="/img/svg/facebook-svgrepo-comB.svg" alt="Facebook" className="w-6 h-6" />
+              <FacebookIcon stroke="#fff" />
             </Link>
+
             <Link href="#" className="hover:text-gray-300 cursor-pointer">
-              <img src="/img/svg/instagram-svgrepo-comB.svg" alt="Instagram" className="w-6 h-6" />
+              <InstagramIcon stroke="fff" />
             </Link>
+
             <Link href="#" className="hover:text-gray-300 cursor-pointer">
               <TiktokIcon stroke="#fff" />
             </Link>
@@ -54,11 +61,11 @@ const Footer = () => {
           <p className="font-bold mb-2">Contacto</p>
           <div className="text-sm flex flex-col items-center md:items-start gap-2">
             <p className="flex items-center gap-2 cursor-pointer">
-              <img src="/img/svg/phone-flip-svgrepo-com.svg" alt="Phone" className="w-5 h-5" />
-              +52 000 0000
+              <MailIcon stroke="#fff" />
+                +52 000 0000
             </p>
             <p className="flex items-center gap-2 cursor-pointer">
-              <img src="/img/svg/gmail-svgrepo-com.svg" alt="Email" className="w-5 h-5" />
+              <PhoneIcon stroke="#fff" />
               gomich@gmail.com
             </p>
           </div>
