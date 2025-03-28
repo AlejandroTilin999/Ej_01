@@ -35,7 +35,7 @@ export default function AccommodationLayout({ children }) {
     <div className={`${geistSans.variable} ${geistMono.variable} antialiased flex min-h-screen flex-col`}>
       <Header />
       <main className="flex-grow">{children}</main>
-      <Footer />
+      
     </div>
   )
 }
