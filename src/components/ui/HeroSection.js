@@ -26,7 +26,7 @@ const HeroSection = () => {
                 <p className="text-gray-600 mt-1">El Alma de México</p>
               </div>
 
-              <div className="bg-white/90 rounded-full shadow-md px-6 py-3 flex items-center border border-gray-300 text-base font-medium">
+              <div className="bg-white rounded-full shadow-md px-6 py-3 flex items-center border border-gray-300 text-base font-medium">
                 <p className="text-gray-700">⛅ 18°C Soleado</p>
               </div>
             </div>
@@ -36,7 +36,7 @@ const HeroSection = () => {
             <input
               type="text"
               placeholder="¿A qué municipio deseas viajar?"
-              className="w-full md:flex-1 px-4 py-3 focus:outline-none border border-gray-300 rounded-full shadow-sm text-gray-700 text-center md:text-left"
+              className="w-full md:flex-1 px-4 py-3 focus:outline-none border border-gray-300 rounded-full shadow-sm text-gray-700 text-center md:text-left bg-white"
             />
             <button className="bg-accent text-white px-8 py-3 md:py-4 md:px-6 w-full md:w-auto rounded-full hover:opacity-80 transition-opacity duration-300 cursor-pointer">
               Buscar

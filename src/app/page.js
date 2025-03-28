@@ -11,11 +11,11 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      <PueblosMagicos />
+      <NoticiasRecientes />
       <Novedades />
       <TopDestinos />
       <Eventos />
-      <PueblosMagicos />
-      <NoticiasRecientes />
       <Galeria />
       <SesionPreFooter />
     </>
