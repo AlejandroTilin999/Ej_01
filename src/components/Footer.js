@@ -15,8 +15,11 @@ const Footer = () => {
       <Container className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left font-semibold">
         
         <div className="flex flex-col items-center md:items-start">
+        <Link href="/" className="flex items-center cursor-pointer">
           <img src="/img/imagesGoMich/GoMichoacan.png" alt="Go Michoacán" className="w-[150px] md:w-[200px] cursor-pointer" />
+        </Link>
           <p className="mt-2 text-sm">"Conoce, vive y siente la esencia de Michoacán."</p>
+        
 
           <p className="font-bold mt-4">Síguenos</p>
           <div className="flex justify-center md:justify-start gap-4 text-lg mt-2">

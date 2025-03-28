@@ -1,10 +1,14 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Container from '@/components/ui/Container'
 
 const Navbar = () => {
+  const pathname = usePathname()
+  const isAccommodationPage = pathname.startsWith('/accommodation')
+
   const [isOpen, setIsOpen] = useState(false)
   const [scrolling, setScrolling] = useState(false)
 
@@ -18,11 +22,12 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const linkColor = scrolling ? 'text-primary' : 'text-white'
+  const solidBg = isAccommodationPage || scrolling
+  const linkColor = solidBg ? 'text-primary' : 'text-white'
   const buttonTextColor = 'text-white'
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolling ? 'bg-white/90 shadow-md' : 'bg-transparent'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${solidBg ? 'bg-white shadow-md' : 'bg-transparent'}`}>
       <Container className="flex items-center justify-between py-2">
         <Link href="/" className="flex items-center cursor-pointer">
           <img
@@ -34,7 +39,7 @@ const Navbar = () => {
 
         <ul className={`hidden lg:flex items-center space-x-6 font-semibold text-lg md:text-base sm:text-sm ${linkColor}`}>
           <li><Link href="#" className="cursor-pointer hover:text-accent transition-colors duration-300">Restaurantes</Link></li>
-          <li><Link href="#" className="cursor-pointer hover:text-accent transition-colors duration-300">Alojamientos</Link></li>
+          <li><Link href="/accommodation" className="cursor-pointer hover:text-accent transition-colors duration-300">Alojamientos</Link></li>
           <li><Link href="#" className="cursor-pointer hover:text-accent transition-colors duration-300">Actividades</Link></li>
           <li><Link href="#" className="cursor-pointer hover:text-accent transition-colors duration-300">Municipios</Link></li>
           <li><Link href="#" className="cursor-pointer hover:text-accent transition-colors duration-300">Blog</Link></li>
@@ -49,7 +54,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        <button className="lg:hidden text-3xl transition-transform duration-300 cursor-pointer text-white" onClick={toggleMenu}>
+        <button className={`lg:hidden text-3xl transition-transform duration-300 cursor-pointer ${solidBg ? 'text-primary' : 'text-white'}`} onClick={toggleMenu}>
           {isOpen ? (
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" stroke="currentColor" strokeWidth="2">
               <line x1="18" y1="6" x2="6" y2="18" />
