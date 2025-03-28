@@ -13,9 +13,9 @@ export default function Home() {
       <HeroSection />
       <PueblosMagicos />
       <NoticiasRecientes />
+      <Eventos />
       <Novedades />
       <TopDestinos />
-      <Eventos />
       <Galeria />
       <SesionPreFooter />
     </>
