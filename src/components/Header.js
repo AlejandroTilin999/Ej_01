@@ -72,7 +72,7 @@ const Navbar = () => {
         <div className={`absolute w-full left-0 transition-all duration-300 bg-white ${isOpen ? 'top-full opacity-100 shadow-lg' : 'top-[-500px] opacity-0 pointer-events-none'}`}>
           <ul className="flex flex-col px-6 text-center text-primary">
             <li className="py-3 border-b"><Link href="#" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Restaurantes</Link></li>
-            <li className="py-2 border-b"><Link href="#" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Alojamientos</Link></li>
+            <li className="py-2 border-b"><Link href="/accommodation" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Alojamientos</Link></li>
             <li className="py-2 border-b"><Link href="#" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Actividades</Link></li>
             <li className="py-2 border-b"><Link href="#" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Municipios</Link></li>
             <li className="py-2 border-b"><Link href="#" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Blog</Link></li>
