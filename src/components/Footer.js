@@ -1,7 +1,6 @@
 'use client'
 
 import TiktokIcon from '@/assets/icons/TiktokIcon'
-
 import Link from 'next/link'
 import Container from '@/components/ui/Container'
 import FacebookIcon from '@/assets/icons/FacebookIcon'
