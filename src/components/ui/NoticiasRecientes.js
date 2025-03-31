@@ -1,5 +1,7 @@
 'use client'
 
+import Container from "@/components/ui/Container"
+
 const noticias = [
   { src: "/img/imagesGoMich/Fondo.jpg", titulo: "Inauguran lujoso hotel boutique en el centro de Morelia", descripcion: "Un nuevo espacio de hospedaje con vistas a la Catedral y servicios exclusivos.", categoria: "TURISMO", fecha: "22 Marzo 2025, 09:30", ubicacion: "Morelia" },
   { src: "/img/imagesGoMich/Fondo.webp", titulo: "Pátzcuaro celebrará el Festival de la Cultura Purépecha", descripcion: "Un evento con danzas tradicionales, gastronomía y exposiciones artesanales.", categoria: "CULTURA", fecha: "20 Marzo 2025, 15:00", ubicacion: "Pátzcuaro" },
@@ -24,7 +26,7 @@ const getCategoryColor = (category) => {
 const NoticiasRecientes = () => {
   return (
     <section className="py-12 bg-gray-100">
-      <div className="max-w-[1200px] mx-auto px-6">
+      <Container>
         <h2 className="text-3xl font-bold text-gray-800 mb-4">Noticias más recientes</h2>
         <div className="w-50 h-[5px] bg-accent mb-6"></div>
 
@@ -62,7 +64,7 @@ const NoticiasRecientes = () => {
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

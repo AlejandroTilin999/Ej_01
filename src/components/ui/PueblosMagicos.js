@@ -3,10 +3,11 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
 
-// Importa primero los estilos de swiper y luego tu CSS personalizado
 import 'swiper/css'
 import 'swiper/css/navigation'
 import "@/styles/carrousel.css"
+
+import Container from '@/components/ui/Container'
 
 const pueblos = [
   { src: "/img/imagesGoMich/Fondo.jpg", titulo: "Morelia", descripcion: "La capital de Michoacán" },
@@ -20,7 +21,7 @@ const pueblos = [
 const PueblosMagicos = () => {
   return (
     <section className="py-12 bg-gray-100">
-      <div className="max-w-[1200px] mx-auto px-6">
+      <Container>
         <h2 className="text-3xl font-bold text-gray-800 mb-4">
           Pueblos Mágicos, experiencias únicas
         </h2>
@@ -55,7 +56,7 @@ const PueblosMagicos = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
+      </Container>
     </section>
   )
 }

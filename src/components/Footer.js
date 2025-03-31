@@ -40,8 +40,8 @@ const Footer = () => {
         <div>
           <p className="font-semibold mb-2">Enlaces</p>
           <ul className="space-y-1 text-sm">
-            <li><Link href="#" className="hover:text-gray-300 cursor-pointer">Restaurantes</Link></li>
-            <li><Link href="/accommodation" className="hover:text-gray-300 cursor-pointer">Alojamientos</Link></li>
+            <li><Link href="/restaurantes" className="hover:text-gray-300 cursor-pointer">Restaurantes</Link></li>
+            <li><Link href="/alojamientos" className="hover:text-gray-300 cursor-pointer">Alojamientos</Link></li>
             <li><Link href="#" className="hover:text-gray-300 cursor-pointer">Actividades</Link></li>
             <li><Link href="#" className="hover:text-gray-300 cursor-pointer">Municipios</Link></li>
             <li><Link href="#" className="hover:text-gray-300 cursor-pointer">Blog</Link></li>
@@ -51,8 +51,8 @@ const Footer = () => {
         <div>
           <p className="font-semibold mb-2">Enlaces</p>
           <ul className="space-y-1 text-sm">
-            <li><Link href="#" className="hover:text-gray-300 cursor-pointer">Restaurantes</Link></li>
-            <li><Link href="/accommodation" className="hover:text-gray-300 cursor-pointer">Alojamientos</Link></li>
+            <li><Link href="/restaurantes" className="hover:text-gray-300 cursor-pointer">Restaurantes</Link></li>
+            <li><Link href="/alojamientos" className="hover:text-gray-300 cursor-pointer">Alojamientos</Link></li>
             <li><Link href="#" className="hover:text-gray-300 cursor-pointer">Actividades</Link></li>
             <li><Link href="#" className="hover:text-gray-300 cursor-pointer">Municipios</Link></li>
             <li><Link href="#" className="hover:text-gray-300 cursor-pointer">Blog</Link></li>

@@ -1,5 +1,7 @@
 'use client'
 
+import Container from '@/components/ui/Container'
+
 const TopDestinos = () => {
   const destinos = [
     { src: "/img/imagesGoMich/Fondo.jpg", titulo: "Morelia - La Ciudad de la Cantera Rosa" },
@@ -12,7 +14,7 @@ const TopDestinos = () => {
 
   return (
     <section className="py-12 bg-gray-100">
-      <div className="max-w-[1200px] mx-auto px-6">
+      <Container>
         <h2 className="text-3xl font-bold text-gray-800 mb-2 md:mb-4">Top Destinos</h2>
         <div className="w-50 h-[5px] bg-accent mb-6"></div>
 
@@ -36,7 +38,7 @@ const TopDestinos = () => {
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

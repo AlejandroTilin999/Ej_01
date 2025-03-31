@@ -1,5 +1,7 @@
 'use client'
 
+import Container from "@/components/ui/Container"
+
 const Novedades = () => {
   const novedades = [
     { src: "/img/imagesGoMich/Fondo.jpg", titulo: "Morelia", descripcion: "La capital de Michoacán" },
@@ -12,18 +14,16 @@ const Novedades = () => {
 
   return (
     <section className="py-12 bg-gray-100">
-      <div className="max-w-[1200px] mx-auto px-6">
+      <Container>
         <h2 className="text-3xl font-bold text-gray-800 mb-2 md:mb-4">Hospédate, Degusta y Descubre</h2>
         <div className="w-50 h-[5px] bg-secondary mb-6"></div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {novedades.map((item, index) => (
             <div 
               key={index} 
-              className={`relative overflow-hidden rounded-lg group transition-all duration-500 shadow-sm hover:shadow-[0px_4px_10px_rgba(28,52,88,0.15) ] ${
-                index === 0 || index === 5 ? "md:col-span-2 md:row-span-1" : 
-                index === 3 ? "md:col-span-1 md:row-span-1" : 
-                "md:col-span-1 md:row-span-1"
+              className={`relative overflow-hidden rounded-lg group transition-all duration-500 shadow-sm hover:shadow-[0px_4px_10px_rgba(28,52,88,0.15)] ${
+                index === 0 || index === 5 ? "md:col-span-2" : "md:col-span-1"
               }`}
             >
               <img 
@@ -41,7 +41,7 @@ const Novedades = () => {
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

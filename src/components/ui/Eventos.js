@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from "react"
+import Container from "@/components/ui/Container"
 
 const Eventos = () => {
   const [show, setShow] = useState(false)
@@ -18,21 +19,21 @@ const Eventos = () => {
 
   return (
     <section className="py-12 bg-gray-100">
-    <div className="max-w-[1200px] mx-auto px-6">
-      <h2 className="text-3xl font-bold text-gray-800 mb-2 md:mb-4">Eventos</h2>
-      <div className="w-50 h-[5px] bg-primary mb-6"></div>
+      <Container>
+        <h2 className="text-3xl font-bold text-gray-800 mb-2 md:mb-4">Eventos</h2>
+        <div className="w-50 h-[5px] bg-primary mb-6"></div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {eventos.map((evento, index) => (
-            <div 
-              key={index} 
-              className={`relative bg-white rounded-xl shadow-sm overflow-hidden transition-transform duration-300 
-              hover:scale-105 hover:shadow-md`}>
-    
-              <img 
-                src={evento.src} 
-                alt={evento.titulo} 
-                className="w-full h-56 object-cover"/>
+            <div
+              key={index}
+              className="relative bg-white rounded-xl shadow-sm overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-md"
+            >
+              <img
+                src={evento.src}
+                alt={evento.titulo}
+                className="w-full h-56 object-cover"
+              />
 
               <div className="p-4 text-center md:text-left">
                 <div className="flex justify-center md:justify-start text-gray-700 font-bold text-lg">
@@ -49,7 +50,7 @@ const Eventos = () => {
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   )
 }
