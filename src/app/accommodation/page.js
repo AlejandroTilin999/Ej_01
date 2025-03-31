@@ -2,12 +2,13 @@
 
 import { useState, useRef, useEffect } from "react"
 
-import WifiIcon from "@/assets/icons/WifiIcon"
-import FoodIcon from "@/assets/icons/FoodIcon"
-import LuxuryIcon from "@/assets/icons/LuxuryIcon"
-import HotWaterIcon from "@/assets/icons/HotWaterIcon"
-import HeartIcon from "@/assets/icons/HeartIcon"
-import HeartFilledIcon from "@/assets/icons/HeartFilledIcon"
+import WifiIcon from '@/assets/icons/WifiIcon'
+import FoodIcon from '@/assets/icons/FoodIcon'
+import LuxuryIcon from '@/assets/icons/LuxuryIcon'
+import HotWaterIcon from '@/assets/icons/HotWaterIcon'
+import HeartIcon from '@/assets/icons/HeartIcon'
+import HeartFilledIcon from '@/assets/icons/HeartFilledIcon'
+import LocationIcon from '@/assets/icons/LocationIcon'
 
 const accommodations = [
   {
@@ -293,17 +294,21 @@ export default function AccommodationPage() {
                     {renderStars(hotel.rating)}
                     <span className="text-gray-500 text-xs">({hotel.rating.toFixed(1)})</span>
                   </div>
-                  <p className="text-sm text-gray-600 font-semibold">{hotel.municipio}</p>
+                  <p className="text-sm text-gray-600 font-semibold flex items-center gap-1">
+                    <LocationIcon className="w-5 h-5 text-accent" />
+                    {hotel.municipio}
+                  </p>
+
                   <p className="text-xs text-gray-400 italic">{hotel.categoria}</p>
                   <p className="text-xs text-gray-500 mt-1 line-clamp-2">{hotel.descripcion}</p>
                 </div>
 
                 <div className="flex items-center flex-wrap gap-3 text-xs text-gray-600 mt-3">
-                  {hotel.internet && <div className="flex items-center gap-1"><WifiIcon /> Internet</div>}
-                  {hotel.comida && <div className="flex items-center gap-1"><FoodIcon /> Comida</div>}
-                  {hotel.lujo && <div className="flex items-center gap-1"><LuxuryIcon /> Lujo</div>}
-                  {hotel.aguaCaliente && <div className="flex items-center gap-1"><HotWaterIcon /> Agua caliente</div>}
-                </div>
+                {hotel.internet && <div className="flex items-center gap-1"><WifiIcon /> Internet</div>}
+                {hotel.comida && <div className="flex items-center gap-1"><FoodIcon /> Comida</div>}
+                {hotel.lujo && <div className="flex items-center gap-1"><LuxuryIcon /> Lujo</div>}
+                {hotel.aguaCaliente && <div className="flex items-center gap-1"><HotWaterIcon /> Agua caliente</div>}
+              </div>
 
 
                 <div className="mt-4 flex justify-between items-center">
