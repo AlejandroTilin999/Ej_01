@@ -10,6 +10,7 @@ import SpicyIcon from '@/assets/icons/SpicyIcon'
 import AccessibilityIcon from '@/assets/icons/AccessibilityIcon'
 import LocationIcon from '@/assets/icons/LocationIcon'
 import WifiIcon from '@/assets/icons/WifiIcon'
+import Container from "@/components/ui/Container"
 import { TakeawayIcon } from '@/assets/icons/TakeawayIcon'
 import { DeliveryIcon } from '@/assets/icons/DeliveryIcon'
 import { ReservationIcon } from '@/assets/icons/ReservationIcon'
@@ -19,6 +20,7 @@ import { PetIcon } from '@/assets/icons/PetIcon'
 import { MusicIcon } from '@/assets/icons/MusicIcon'
 import { ClockIcon } from '@/assets/icons/ClockIcon'
 import { Open24Icon } from '@/assets/icons/Open24Icon'
+
 
 const IconList = ({ rest }) => {
   const icons = [
@@ -47,7 +49,7 @@ const IconList = ({ rest }) => {
           className="relative group flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full cursor-default focus:outline-none focus:ring-2 focus:ring-secondary"
         >
           {item.icon}
-          <span className="absolute bottom-full mb-1 px-2 py-1 text-\[10px\] rounded bg-black text-white opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition text-center whitespace-nowrap z-50 max-w-[150px] text-[10px] md:text-[10px]">
+          <span className="absolute bottom-full mb-1 px-2 py-1 text-[10px] rounded bg-black text-white opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition text-center whitespace-nowrap z-50 max-w-[150px]">
             {item.label}
           </span>
         </li>
@@ -58,7 +60,6 @@ const IconList = ({ rest }) => {
 
 const RestaurantsPage = () => {
   const [search, setSearch] = useState('')
-  const [selectedMunicipio, setSelectedMunicipio] = useState('Todos')
   const [favorites, setFavorites] = useState({})
   const [randomPrices, setRandomPrices] = useState([])
 
@@ -197,8 +198,6 @@ const RestaurantsPage = () => {
     }
   ]
 
-  const municipios = ["Todos", "Morelia", "Pátzcuaro", "Uruapan", "Zamora", "Lázaro Cárdenas"]
-
   useEffect(() => {
     const prices = restaurants.map(() => ({
       price: Math.floor(Math.random() * 400) + 100,
@@ -208,35 +207,14 @@ const RestaurantsPage = () => {
   }, [])
 
   const filtered = restaurants.filter(r => {
-    const nameMatch = r.name.toLowerCase().includes(search.toLowerCase())
-    const muniMatch = selectedMunicipio === 'Todos' || r.municipio === selectedMunicipio
-    return nameMatch && muniMatch
+    return r.name.toLowerCase().includes(search.toLowerCase())
   })
 
   return (
-    <div className="max-w-[1200px] mx-auto px-4 py-8 pt-32 text-center">
-      <div className="flex flex-col md:flex-row items-center gap-4 justify-center mb-6">
-        <input
-          type="text"
-          placeholder="¿Qué restaurante buscas?"
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          className="border border-gray-300 px-5 py-3 rounded-full text-sm w-full max-w-md shadow focus:outline-none focus:ring-2 focus:ring-secondary"
-        />
+    <Container className="py-8 pt-32 text-center">
+      <div className="border border-secondary rounded-2xl px-6 py-5 mb-10 flex flex-col justify-center items-start gap-4 bg-white shadow-md">
+        <h2 className="text-lg font-bold text-primary">Directorio Restaurantes</h2>
       </div>
-
-      <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
-        <select
-          value={selectedMunicipio}
-          onChange={e => setSelectedMunicipio(e.target.value)}
-          className="bg-secondary text-white text-xs font-semibold px-4 py-2 rounded-full shadow hover:bg-secondary/90 transition-all"
-        >
-          {municipios.map(m => (
-            <option key={m} value={m}>{m}</option>
-          ))}
-        </select>
-      </div>
-
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {filtered.map((rest, i) => {
           const isFav = favorites[rest.name] || false
@@ -250,11 +228,11 @@ const RestaurantsPage = () => {
               key={i}
               className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 flex flex-col overflow-hidden border border-gray-100 relative"
             >
-              <div className="relative w-full h-44 overflow-hidden">
+              <div className="relative w-full h-44 overflow-hidden group">
                 <img
                   src={rest.image}
                   alt={rest.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105"
                 />
                 {discount && (
                   <div className="absolute top-2 left-2 bg-secondary text-white text-xs font-bold px-2 py-1 rounded-full shadow">
@@ -308,7 +286,7 @@ const RestaurantsPage = () => {
           )
         })}
       </div>
-    </div>
+    </Container>
   )
 }
 

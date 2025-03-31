@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from "react"
-
+import Container from "@/components/ui/Container"
 import WifiIcon from '@/assets/icons/WifiIcon'
 import FoodIcon from '@/assets/icons/FoodIcon'
 import LuxuryIcon from '@/assets/icons/LuxuryIcon'
@@ -180,10 +180,9 @@ function renderStars(rating) {
 export default function AccommodationPage() {
   const [search, setSearch] = useState("")
   const [selectedHotel, setSelectedHotel] = useState(null)
-  const [selectedMunicipio, setSelectedMunicipio] = useState("Todos")
   const [favorites, setFavorites] = useState({})
-  const modalRef = useRef()
   const [randomPrices, setRandomPrices] = useState([])
+  const modalRef = useRef()
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -207,40 +206,15 @@ export default function AccommodationPage() {
     setRandomPrices(newPrices)
   }, [])
 
-  const filteredHotels = accommodations.filter((h) => {
-    const matchesSearch = h.name.toLowerCase().includes(search.toLowerCase())
-    const matchesMunicipio = selectedMunicipio === "Todos" || h.municipio === selectedMunicipio
-    return matchesSearch && matchesMunicipio
-  })
+  const filteredHotels = accommodations.filter((h) =>
+    h.name.toLowerCase().includes(search.toLowerCase())
+  )
 
   return (
-    <div className="max-w-[1200px] mx-auto px-4 py-8 pt-32 text-center">
-      <div className="flex flex-col md:flex-row items-center gap-4 justify-center mb-6">
-        <input
-          type="text"
-          placeholder="¿A qué municipio deseas viajar?"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="border border-gray-300 px-5 py-3 rounded-full text-sm w-full max-w-md shadow focus:outline-none focus:ring-2 focus:ring-accent"
-        />
-        <button className="bg-accent text-white px-6 py-3 rounded-full font-semibold text-sm shadow hover:opacity-90 transition duration-300">
-          Buscar
-        </button>
-      </div>
+    <Container className="py-8 pt-32 text-center">
 
-      <div className="w-full border-t border-gray-200 my-6"></div>
-
-      <div className="border border-accent rounded-2xl px-6 py-5 mb-10 flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 bg-white shadow-md">
+      <div className="border border-accent rounded-2xl px-6 py-5 mb-10 flex flex-col justify-center items-start gap-4 bg-white shadow-md">
         <h2 className="text-lg font-bold text-primary">Directorio Alojamientos</h2>
-        <select
-          value={selectedMunicipio}
-          onChange={(e) => setSelectedMunicipio(e.target.value)}
-          className="bg-accent text-white text-xs font-semibold px-4 py-2 rounded-full shadow hover:bg-accent/90 transition-all"
-        >
-          {municipios.map((m) => (
-            <option key={m} value={m}>{m}</option>
-          ))}
-        </select>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -304,12 +278,11 @@ export default function AccommodationPage() {
                 </div>
 
                 <div className="flex items-center flex-wrap gap-3 text-xs text-gray-600 mt-3">
-                {hotel.internet && <div className="flex items-center gap-1"><WifiIcon /> Internet</div>}
-                {hotel.comida && <div className="flex items-center gap-1"><FoodIcon /> Comida</div>}
-                {hotel.lujo && <div className="flex items-center gap-1"><LuxuryIcon /> Lujo</div>}
-                {hotel.aguaCaliente && <div className="flex items-center gap-1"><HotWaterIcon /> Agua caliente</div>}
-              </div>
-
+                  {hotel.internet && <div className="flex items-center gap-1"><WifiIcon /> Internet</div>}
+                  {hotel.comida && <div className="flex items-center gap-1"><FoodIcon /> Comida</div>}
+                  {hotel.lujo && <div className="flex items-center gap-1"><LuxuryIcon /> Lujo</div>}
+                  {hotel.aguaCaliente && <div className="flex items-center gap-1"><HotWaterIcon /> Agua caliente</div>}
+                </div>
 
                 <div className="mt-4 flex justify-between items-center">
                   <div className="text-sm text-primary font-bold">
@@ -324,6 +297,6 @@ export default function AccommodationPage() {
           )
         })}
       </div>
-    </div>
+    </Container>
   )
 }
