@@ -47,7 +47,7 @@ const IconList = ({ rest }) => {
           className="relative group flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full cursor-default focus:outline-none focus:ring-2 focus:ring-secondary"
         >
           {item.icon}
-          <span className="absolute bottom-full mb-1 px-2 py-1 text-[10px] rounded bg-black text-white opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition text-center whitespace-nowrap z-50 max-w-[150px] text-[10px] md:text-[10px]">
+          <span className="absolute bottom-full mb-1 px-2 py-1 text-\[10px\] rounded bg-black text-white opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition text-center whitespace-nowrap z-50 max-w-[150px] text-[10px] md:text-[10px]">
             {item.label}
           </span>
         </li>
