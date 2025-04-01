@@ -15,7 +15,7 @@ const Novedades = () => {
   return (
     <section className="py-12 bg-gray-100">
       <Container>
-        <h2 className="text-3xl font-bold text-gray-800 mb-2 md:mb-4">Hospédate, Degusta y Descubre</h2>
+        <h2 className="text-3xl font-onest text-gray-800 mb-2 md:mb-4">Hospédate, Degusta y Descubre</h2>
         <div className="w-50 h-[5px] bg-secondary mb-6"></div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
@@ -35,7 +35,7 @@ const Novedades = () => {
               <div className="absolute inset-0 bg-primary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 cursor-pointer"></div>
 
               <div className="absolute bottom-0 left-0 w-full p-4 bg-primary/70 text-white text-center opacity-0 group-hover:opacity-100 transform translate-y-10 group-hover:translate-y-0 transition-all duration-500">
-                <h3 className="text-lg font-semibold">{item.titulo}</h3>
+                <h3 className="text-lg font-onest">{item.titulo}</h3>
                 <p className="text-sm opacity-80">{item.descripcion}</p>
               </div>
             </div>

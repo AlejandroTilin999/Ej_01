@@ -22,7 +22,7 @@ const PueblosMagicos = () => {
   return (
     <section className="py-12 bg-gray-100">
       <Container>
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">
+        <h2 className="text-3xl font-onest text-gray-800 mb-4">
           Pueblos Mágicos, experiencias únicas
         </h2>
         <div className="w-50 h-[5px] bg-secondary mb-6"></div>
@@ -49,7 +49,7 @@ const PueblosMagicos = () => {
                 />
                 <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-black/70 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 text-white">
-                  <h3 className="text-lg font-bold">{item.titulo}</h3>
+                  <h3 className="text-lg font-onest">{item.titulo}</h3>
                   <p className="text-sm opacity-80">{item.descripcion}</p>
                 </div>
               </div>

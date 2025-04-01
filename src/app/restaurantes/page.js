@@ -211,82 +211,170 @@ const RestaurantsPage = () => {
   })
 
   return (
-    <Container className="py-8 pt-32 text-center">
-      <div className="border border-secondary rounded-2xl px-6 py-5 mb-10 flex flex-col justify-center items-start gap-4 bg-white shadow-md">
-        <h2 className="text-lg font-bold text-primary">Directorio Restaurantes</h2>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {filtered.map((rest, i) => {
-          const isFav = favorites[rest.name] || false
-          const price = randomPrices[i]?.price
-          const discount = randomPrices[i]?.discount
+    <>
+      <div className="py-8">
+        <div className="relative w-full h-[220px] md:h-[260px] lg:h-[380px] overflow-hidden ">
+          <img
+            src="/img/imagesGoMich/Restaurantes.jpeg"
+            srcSet="/img/imagesGoMich/Restaurantes.jpeg 640w,
+          /img/imagesGoMich/Restaurantes.jpeg 1024w,
+          /img/imagesGoMich/Restaurantes.jpeg 1600w"
+            sizes="(max-width: 768px) 100vw,
+         (max-width: 1024px) 100vw,
+         100vw"
+            alt="Restaurantes en Michoacán"
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-black/50 z-10" />
 
-          if (!randomPrices[i]) return null
+          <div className="absolute inset-0 z-20 text-white w-full flex flex-col justify-end ">
+            <div className="max-w-[1200px] 2xl:max-w-[1440px] mx-auto w-full h-full px-6 md:px-11">
 
-          return (
-            <div
-              key={i}
-              className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 flex flex-col overflow-hidden border border-gray-100 relative"
-            >
-              <div className="relative w-full h-44 overflow-hidden group">
-                <img
-                  src={rest.image}
-                  alt={rest.name}
-                  className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105"
-                />
-                {discount && (
-                  <div className="absolute top-2 left-2 bg-secondary text-white text-xs font-bold px-2 py-1 rounded-full shadow">
-                    {discount}% OFF
+              <div className="hidden lg:flex flex-col justify-end h-full pb-14">
+                <h1 className="text-6xl font-onest drop-shadow-md mb-10 text-left">
+                  Restaurantes
+                </h1>
+                <div className="grid grid-cols-4 gap-x-8 text-left text-base font-onest">
+                  <div>
+                    <p className="text-2xl font-onest">108</p>
+                    <p className="opacity-80">restaurantes registrados</p>
                   </div>
-                )}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    setFavorites(prev => ({
-                      ...prev,
-                      [rest.name]: !isFav
-                    }))
-                  }}
-                  className="absolute top-2 right-2 bg-white p-1.5 rounded-full shadow-md hover:scale-110 transition"
-                >
-                  {isFav
-                    ? <HeartFilledIcon w={20} h={20} fill="#e11d48" />
-                    : <HeartIcon w={20} h={20} stroke="#666" />
-                  }
-                </button>
+                  <div>
+                    <p className="text-2xl font-onest">4,838,688</p>
+                    <p className="opacity-80">clientes han visitado</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-onest">290,621</p>
+                    <p className="opacity-80">opiniones reales</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-onest">9.0 / 10</p>
+                    <p className="opacity-80">así nos califican</p>
+                  </div>
+                </div>
               </div>
 
-              <div className="p-4 text-left flex flex-col justify-between flex-grow">
-                <div>
-                  <h3 className="text-lg font-bold text-primary leading-snug">{rest.name}</h3>
-                  <div className="flex items-center gap-2 text-yellow-400 text-sm">
-                    {'★'.repeat(Math.floor(rest.rating))}{rest.rating % 1 >= 0.5 && '✮'}{'☆'.repeat(5 - Math.floor(rest.rating) - (rest.rating % 1 >= 0.5 ? 1 : 0))}
-                    <span className="text-gray-500 text-xs">({rest.rating.toFixed(1)})</span>
+              <div className="hidden sm:flex lg:hidden flex-col justify-end h-full pb-10">
+                <h1 className="text-5xl font-onest drop-shadow-md mb-8 text-left">
+                  Restaurantes
+                </h1>
+                <div className="grid grid-cols-4 gap-x-6 text-left text-sm font-onest">
+                  <div className="hidden sm:block">
+                    <p className="text-xl font-onest">108</p>
+                    <p className="opacity-80">restaurantes registrados</p>
                   </div>
-                  <p className="text-sm text-gray-600 font-semibold flex items-center gap-1">
-                    <LocationIcon className="w-5 h-5 text-secondary" />
-                    {rest.municipio}
-                  </p>
-                  <p className="text-xs text-gray-400 italic">{rest.categoria}</p>
-                  <p className="text-xs text-gray-500 mt-1 line-clamp-2">{rest.descripcion}</p>
+                  <div>
+                    <p className="text-xl font-onest">4,838,688</p>
+                    <p className="opacity-80">clientes han visitado</p>
+                  </div>
+                  <div className="hidden sm:block">
+                    <p className="text-xl font-onest">290,621</p>
+                    <p className="opacity-80">opiniones reales</p>
+                  </div>
+                  <div>
+                    <p className="text-xl font-onest">9.0 / 10</p>
+                    <p className="opacity-80">así nos califican</p>
+                  </div>
                 </div>
+              </div>
 
-                <IconList rest={rest} />
-
-                <div className="mt-4 flex justify-between items-center">
-                  <div className="text-sm text-primary font-bold">
-                    Desde <span className="text-lg">${price}</span> MXN
+              <div className="flex sm:hidden flex-col justify-end h-full pb-9 text-center ">
+                <h1 className="text-4xl font-extrabold drop-shadow-md mb-6">Restaurantes</h1>
+                <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-xs font-onest">
+                  <div>
+                    <p className="text-xl font-onest">4,838,688</p>
+                    <p className="opacity-80">clientes han visitado</p>
                   </div>
-                  <button className="bg-secondary text-white text-xs px-4 py-2 rounded-full hover:bg-secondary/90 transition cursor-pointer">
-                    Reservar
+                  <div>
+                    <p className="text-xl font-onest">9.0 / 10</p>
+                    <p className="opacity-80">así nos califican</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+      <Container className="py-8  text-center">
+
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {filtered.map((rest, i) => {
+            const isFav = favorites[rest.name] || false
+            const price = randomPrices[i]?.price
+            const discount = randomPrices[i]?.discount
+
+            if (!randomPrices[i]) return null
+
+            return (
+              <div
+                key={i}
+                className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 flex flex-col overflow-hidden border border-gray-100 relative"
+              >
+                <div className="relative w-full h-44 overflow-hidden group">
+                  <img
+                    src={rest.image}
+                    alt={rest.name}
+                    className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105"
+                  />
+                  {discount && (
+                    <div className="absolute top-2 left-2 bg-secondary text-white text-xs font-onest px-2 py-1 rounded-full shadow">
+                      {discount}% OFF
+                    </div>
+                  )}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setFavorites(prev => ({
+                        ...prev,
+                        [rest.name]: !isFav
+                      }))
+                    }}
+                    className="absolute top-2 right-2 bg-white p-1.5 rounded-full shadow-md hover:scale-110 transition"
+                  >
+                    {isFav
+                      ? <HeartFilledIcon w={20} h={20} fill="#e11d48" />
+                      : <HeartIcon w={20} h={20} stroke="#666" />
+                    }
                   </button>
                 </div>
+
+                <div className="p-4 text-left flex flex-col justify-between flex-grow">
+                  <div>
+                    <h3 className="text-lg font-onest text-primary leading-snug">{rest.name}</h3>
+                    <div className="flex items-center gap-2 text-yellow-400 text-sm">
+                      {'★'.repeat(Math.floor(rest.rating))}{rest.rating % 1 >= 0.5 && '✮'}{'☆'.repeat(5 - Math.floor(rest.rating) - (rest.rating % 1 >= 0.5 ? 1 : 0))}
+                      <span className="text-gray-500 text-xs">({rest.rating.toFixed(1)})</span>
+                    </div>
+                    <p className="text-sm text-gray-600 font-semibold flex items-center gap-1">
+                      <LocationIcon className="w-5 h-5 text-secondary" />
+                      {rest.municipio}
+                    </p>
+                    <p className="text-xs text-gray-400 italic">{rest.categoria}</p>
+                    <p className="text-xs text-gray-500 mt-1 line-clamp-2">{rest.descripcion}</p>
+                  </div>
+
+                  <IconList rest={rest} />
+
+                  <div className="mt-4 flex justify-between items-center">
+                    <div className="text-sm text-primary font-onest">
+                      Desde <span className="text-lg">${price}</span> MXN
+                    </div>
+                    <button className="bg-secondary text-white text-xs px-4 py-2 rounded-full hover:bg-secondary/90 transition cursor-pointer">
+                      Reservar
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          )
-        })}
-      </div>
-    </Container>
+            )
+          })}
+        </div>
+      </Container>
+    </>
   )
 }
 

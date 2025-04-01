@@ -20,13 +20,13 @@ const HeroSection = () => {
           <div className="flex flex-col md:flex-row justify-center items-center w-full gap-6 text-center md:text-left">
             <div className="flex items-center justify-center flex-wrap gap-4">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-primary">
+                <h2 className="text-2xl md:text-3xl font-onest text-primary">
                   Descubre Michoacán
                 </h2>
                 <p className="text-gray-600 mt-1">El Alma de México</p>
               </div>
 
-              <div className="bg-white rounded-full shadow-md px-6 py-3 flex items-center border border-gray-300 text-base font-medium">
+              <div className="bg-white rounded-full shadow-md px-6 py-3 flex items-center border border-gray-300 text-base font-onest">
                 <p className="text-gray-700">⛅ 18°C Soleado</p>
               </div>
             </div>

@@ -13,7 +13,7 @@ const SesionPreFooter = () => {
       <div className="relative z-10 max-w-[1200px] mx-auto px-8 py-12 w-full flex flex-col items-center justify-center gap-6 md:gap-10">
         
         <div className="flex flex-col md:flex-row items-center justify-between w-full gap-6 md:gap-10 text-center md:text-left">
-          <p className="text-white text-lg sm:text-2xl md:text-3xl font-semibold leading-relaxed max-w-xl">
+          <p className="text-white text-lg sm:text-2xl md:text-3xl font-onest leading-relaxed max-w-xl">
             Michoacán: un paraíso de tradiciones, paisajes únicos y sabores inolvidables. 
             Ven y vive la magia que hace latir el corazón de México.
           </p>
@@ -26,7 +26,7 @@ const SesionPreFooter = () => {
         </div>
 
         <div className="mt-2 md:mt-0">
-          <button className="bg-accent text-white px-6 py-3 rounded-full shadow-md hover:opacity-98 transition-all duration-300 text-sm sm:text-base font-semibold cursor-pointer">
+          <button className="bg-accent text-white px-6 py-3 rounded-full shadow-md hover:opacity-98 transition-all duration-300 text-sm sm:text-base font-onest cursor-pointer">
             Únete con nosotros
           </button>
         </div>

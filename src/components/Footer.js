@@ -11,7 +11,7 @@ import PhoneIcon from '@/assets/icons/PhoneIcon'
 const Footer = () => {
   return (
     <footer className="bg-primary text-white py-10 w-full">
-      <Container className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left font-semibold">
+      <Container className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left font-onest">
         
         <div className="flex flex-col items-center md:items-start">
         <Link href="/" className="flex items-center cursor-pointer">
@@ -20,7 +20,7 @@ const Footer = () => {
           <p className="mt-2 text-sm">"Conoce, vive y siente la esencia de Michoacán."</p>
         
 
-          <p className="font-bold mt-4">Síguenos</p>
+          <p className="font-onest mt-4">Síguenos</p>
           <div className="flex justify-center md:justify-start gap-4 text-lg mt-2">
 
             <Link href="#" className="hover:text-gray-300 cursor-pointer">
@@ -38,7 +38,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <p className="font-semibold mb-2">Enlaces</p>
+          <p className="font-onest mb-2">Enlaces</p>
           <ul className="space-y-1 text-sm">
             <li><Link href="/restaurantes" className="hover:text-gray-300 cursor-pointer">Restaurantes</Link></li>
             <li><Link href="/alojamientos" className="hover:text-gray-300 cursor-pointer">Alojamientos</Link></li>
@@ -60,7 +60,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <p className="font-bold mb-2">Contacto</p>
+          <p className="font-onest mb-2">Contacto</p>
           <div className="text-sm flex flex-col items-center md:items-start gap-2">
             <p className="flex items-center gap-2 cursor-pointer">
               <MailIcon stroke="#fff" />

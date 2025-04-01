@@ -27,7 +27,7 @@ const NoticiasRecientes = () => {
   return (
     <section className="py-12 bg-gray-100">
       <Container>
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">Noticias más recientes</h2>
+        <h2 className="text-3xl font-onest text-gray-800 mb-4">Noticias más recientes</h2>
         <div className="w-50 h-[5px] bg-accent mb-6"></div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -47,13 +47,13 @@ const NoticiasRecientes = () => {
 
               <div className="relative z-10 p-6 flex flex-col justify-end h-full">
                 <div className="flex items-center gap-2">
-                  <span className={`px-3 py-1 text-xs font-bold text-white rounded-full ${getCategoryColor(noticia.categoria)}`}>
+                  <span className={`px-3 py-1 text-xs font-onest text-white rounded-full ${getCategoryColor(noticia.categoria)}`}>
                     {noticia.categoria}
                   </span>
                   <span className="text-white text-xs opacity-80"> {noticia.ubicacion}</span>
                 </div>
                 
-                <h3 className="text-white font-bold text-lg sm:text-xl mt-2 leading-tight">
+                <h3 className="text-white font-onest text-lg sm:text-xl mt-2 leading-tight">
                   {noticia.titulo}
                 </h3>
 

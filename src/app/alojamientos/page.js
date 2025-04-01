@@ -211,92 +211,176 @@ export default function AccommodationPage() {
   )
 
   return (
-    <Container className="py-8 pt-32 text-center">
+    <>
+      <div className="py-8">
+        <div className="relative w-full h-[220px] md:h-[260px] lg:h-[380px] overflow-hidden ">
+          <img
+            src="/img/imagesGoMich/Alojamientos.jpg"
+            srcSet="/img/imagesGoMich/Alojamientos.jpg 640w,
+              /img/imagesGoMich/Alojamientos.jpg 1024w,
+              /img/imagesGoMich/Alojamientos.jpg 1600w"
+            sizes="(max-width: 768px) 100vw,
+              (max-width: 1024px) 100vw,
+              100vw"
+            alt="Alojamientos en Michoacán"
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-black/50 z-10" />
 
-      <div className="border border-accent rounded-2xl px-6 py-5 mb-10 flex flex-col justify-center items-start gap-4 bg-white shadow-md">
-        <h2 className="text-lg font-bold text-primary">Directorio Alojamientos</h2>
-      </div>
+          <div className="absolute inset-0 z-20 text-white w-full flex flex-col justify-end ">
+            <div className="max-w-[1200px] 2xl:max-w-[1440px] mx-auto w-full h-full px-6 md:px-11">
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {filteredHotels.map((hotel, i) => {
-          const isFav = favorites[hotel.name] || false
-          const hotelPrice = randomPrices[i]?.price
-          const discount = randomPrices[i]?.discount
-
-          if (!randomPrices[i]) return null
-
-          return (
-            <div
-              key={i}
-              className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden border border-gray-100 relative"
-              onClick={() => setSelectedHotel(hotel)}
-            >
-              <div className="relative w-full h-44 overflow-hidden">
-                <img
-                  src={hotel.image}
-                  alt={hotel.name}
-                  className="w-full h-full object-cover transform hover:scale-105 transition duration-300"
-                />
-
-                {discount && (
-                  <div className="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow">
-                    {discount}% OFF
+              <div className="hidden lg:flex flex-col justify-end h-full pb-14">
+                <h1 className="text-6xl font-onest drop-shadow-md mb-10 text-left">
+                  Alojamientos
+                </h1>
+                <div className="grid grid-cols-4 gap-x-8 text-left text-base font-onest">
+                  <div>
+                    <p className="text-2xl font-onest">85</p>
+                    <p className="opacity-80">alojamientos registrados</p>
                   </div>
-                )}
-
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    setFavorites(prev => ({
-                      ...prev,
-                      [hotel.name]: !isFav
-                    }))
-                  }}
-                  className="absolute top-2 right-2 bg-white p-1.5 rounded-full shadow-md hover:scale-110 transition"
-                >
-                  {isFav
-                    ? <HeartFilledIcon w={20} h={20} fill="#e11d48" />
-                    : <HeartIcon w={20} h={20} stroke="#666" />
-                  }
-                </button>
+                  <div>
+                    <p className="text-2xl font-onest">3,764,122</p>
+                    <p className="opacity-80">viajeros hospedados</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-onest">245,901</p>
+                    <p className="opacity-80">opiniones verificadas</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-onest">9.3 / 10</p>
+                    <p className="opacity-80">nivel de satisfacción</p>
+                  </div>
+                </div>
               </div>
 
-              <div className="p-4 text-left flex flex-col justify-between flex-grow">
-                <div>
-                  <h3 className="text-lg font-bold text-primary leading-snug">{hotel.name}</h3>
-                  <div className="flex items-center gap-2 text-yellow-400 text-sm">
-                    {renderStars(hotel.rating)}
-                    <span className="text-gray-500 text-xs">({hotel.rating.toFixed(1)})</span>
+              <div className="hidden sm:flex lg:hidden flex-col justify-end h-full pb-10">
+                <h1 className="text-5xl font-onest drop-shadow-md mb-8 text-left">
+                  Alojamientos
+                </h1>
+                <div className="grid grid-cols-4 gap-x-6 text-left text-sm font-onest">
+                  <div className="hidden sm:block">
+                    <p className="text-xl font-onest">85</p>
+                    <p className="opacity-80">alojamientos registrados</p>
                   </div>
-                  <p className="text-sm text-gray-600 font-semibold flex items-center gap-1">
-                    <LocationIcon className="w-5 h-5 text-accent" />
-                    {hotel.municipio}
-                  </p>
-
-                  <p className="text-xs text-gray-400 italic">{hotel.categoria}</p>
-                  <p className="text-xs text-gray-500 mt-1 line-clamp-2">{hotel.descripcion}</p>
-                </div>
-
-                <div className="flex items-center flex-wrap gap-3 text-xs text-gray-600 mt-3">
-                  {hotel.internet && <div className="flex items-center gap-1"><WifiIcon /> Internet</div>}
-                  {hotel.comida && <div className="flex items-center gap-1"><FoodIcon /> Comida</div>}
-                  {hotel.lujo && <div className="flex items-center gap-1"><LuxuryIcon /> Lujo</div>}
-                  {hotel.aguaCaliente && <div className="flex items-center gap-1"><HotWaterIcon /> Agua caliente</div>}
-                </div>
-
-                <div className="mt-4 flex justify-between items-center">
-                  <div className="text-sm text-primary font-bold">
-                    Desde <span className="text-lg">${hotelPrice}</span> MXN
+                  <div>
+                    <p className="text-xl font-onest">3,764,122</p>
+                    <p className="opacity-80">viajeros hospedados</p>
                   </div>
-                  <button className="bg-accent text-white text-xs px-4 py-2 rounded-full hover:bg-accent/90 transition cursor-pointer">
-                    Ver disponibilidad
+                  <div className="hidden sm:block">
+                    <p className="text-xl font-onest">245,901</p>
+                    <p className="opacity-80">opiniones verificadas</p>
+                  </div>
+                  <div>
+                    <p className="text-xl font-onest">9.3 / 10</p>
+                    <p className="opacity-80">nivel de satisfacción</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex sm:hidden flex-col justify-end h-full pb-9 text-center ">
+                <h1 className="text-4xl font-onest drop-shadow-md mb-6">Alojamientos</h1>
+                <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-xs font-onest">
+                  <div>
+                    <p className="text-xl font-onest">3,764,122</p>
+                    <p className="opacity-80">viajeros hospedados</p>
+                  </div>
+                  <div>
+                    <p className="text-xl font-onest">9.3 / 10</p>
+                    <p className="opacity-80">nivel de satisfacción</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <Container className="py-8">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {filteredHotels.map((hotel, i) => {
+            const isFav = favorites[hotel.name] || false
+            const hotelPrice = randomPrices[i]?.price
+            const discount = randomPrices[i]?.discount
+
+            if (!randomPrices[i]) return null
+
+            return (
+              <div
+                key={i}
+                className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden border border-gray-100 relative"
+                onClick={() => setSelectedHotel(hotel)}
+              >
+                <div className="relative w-full h-44 overflow-hidden">
+                  <img
+                    src={hotel.image}
+                    alt={hotel.name}
+                    className="w-full h-full object-cover transform hover:scale-105 transition duration-300"
+                  />
+
+                  {discount && (
+                    <div className="absolute top-2 left-2 bg-green-500 text-white text-xs font-onest px-2 py-1 rounded-full shadow">
+                      {discount}% OFF
+                    </div>
+                  )}
+
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setFavorites(prev => ({
+                        ...prev,
+                        [hotel.name]: !isFav
+                      }))
+                    }}
+                    className="absolute top-2 right-2 bg-white p-1.5 rounded-full shadow-md hover:scale-110 transition"
+                  >
+                    {isFav
+                      ? <HeartFilledIcon w={20} h={20} fill="#e11d48" />
+                      : <HeartIcon w={20} h={20} stroke="#666" />
+                    }
                   </button>
                 </div>
+
+                <div className="p-4 text-left flex flex-col justify-between flex-grow">
+                  <div>
+                    <h3 className="text-lg font-onest text-primary leading-snug">{hotel.name}</h3>
+                    <div className="flex items-center gap-2 text-yellow-400 text-sm">
+                      {renderStars(hotel.rating)}
+                      <span className="text-gray-500 text-xs">({hotel.rating.toFixed(1)})</span>
+                    </div>
+                    <p className="text-sm text-gray-600 font-onest flex items-center gap-1">
+                      <LocationIcon className="w-5 h-5 text-accent" />
+                      {hotel.municipio}
+                    </p>
+
+                    <p className="text-xs text-gray-400 italic">{hotel.categoria}</p>
+                    <p className="text-xs text-gray-500 mt-1 line-clamp-2">{hotel.descripcion}</p>
+                  </div>
+
+                  <div className="flex items-center flex-wrap gap-3 text-xs text-gray-600 mt-3">
+                    {hotel.internet && <div className="flex items-center gap-1"><WifiIcon /> Internet</div>}
+                    {hotel.comida && <div className="flex items-center gap-1"><FoodIcon /> Comida</div>}
+                    {hotel.lujo && <div className="flex items-center gap-1"><LuxuryIcon /> Lujo</div>}
+                    {hotel.aguaCaliente && <div className="flex items-center gap-1"><HotWaterIcon /> Agua caliente</div>}
+                  </div>
+
+                  <div className="mt-4 flex justify-between items-center">
+                    <div className="text-sm text-primary font-onest">
+                      Desde <span className="text-lg">${hotelPrice}</span> MXN
+                    </div>
+                    <button className="bg-accent text-white text-xs px-4 py-2 rounded-full hover:bg-accent/90 transition cursor-pointer">
+                      Ver disponibilidad
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          )
-        })}
-      </div>
-    </Container>
+            )
+          })}
+        </div>
+      </Container>
+    </>
   )
 }
