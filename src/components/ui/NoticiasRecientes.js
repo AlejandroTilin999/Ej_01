@@ -32,14 +32,23 @@ const NoticiasRecientes = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {noticias.map((noticia, index) => (
-            <div 
-              key={index} 
-              className={`relative rounded-xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02] 
+            <div
+              key={index}
+              className={`relative rounded-xl overflow-hidden group cursor-pointer transition-all duration-300 
                 ${index === 2 ? "lg:col-span-2 h-[250px] lg:order-last" : "h-[250px]"}`}
+              onTouchStart={(e) => {
+                const target = e.currentTarget
+                if (target && target.classList) {
+                  target.classList.add('hovered')
+                  setTimeout(() => {
+                    target.classList.remove('hovered')
+                  }, 500)
+                }
+              }}
             >
-              <img 
-                src={noticia.src} 
-                alt={noticia.titulo} 
+              <img
+                src={noticia.src}
+                alt={noticia.titulo}
                 className="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
               />
 
@@ -52,7 +61,7 @@ const NoticiasRecientes = () => {
                   </span>
                   <span className="text-white text-xs opacity-80"> {noticia.ubicacion}</span>
                 </div>
-                
+
                 <h3 className="text-white font-onest text-lg sm:text-xl mt-2 leading-tight">
                   {noticia.titulo}
                 </h3>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Container from "@/components/ui/Container"
+import "@/styles/hovered-card.css"
 
 const Eventos = () => {
   const [show, setShow] = useState(false)
@@ -27,7 +28,14 @@ const Eventos = () => {
           {eventos.map((evento, index) => (
             <div
               key={index}
-              className="relative bg-white rounded-xl shadow-sm overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-md"
+              className="relative bg-white rounded-xl shadow-sm overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-md group"
+              onPointerDown={(e) => {
+                const target = e.currentTarget
+                target.classList.add('hovered-card')
+                setTimeout(() => {
+                  target.classList.remove('hovered-card')
+                }, 400)
+              }}              
             >
               <img
                 src={evento.src}

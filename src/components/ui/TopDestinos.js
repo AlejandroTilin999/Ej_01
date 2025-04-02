@@ -1,6 +1,7 @@
 'use client'
 
 import Container from '@/components/ui/Container'
+import { useState } from "react"
 
 const TopDestinos = () => {
   const destinos = [
@@ -19,24 +20,41 @@ const TopDestinos = () => {
         <div className="w-50 h-[5px] bg-accent mb-6"></div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {destinos.map((item, index) => (
-            <div 
-              key={index} 
-              className="relative overflow-hidden rounded-xl group transition-all duration-500 shadow-xl border border-gray-200 hover:shadow-2xl hover:scale-[1.03]"
-            >
-              <img 
-                src={item.src} 
-                alt={item.titulo} 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-hover:blur-sm"
-              />
+          {destinos.map((item, index) => {
+            const [hovered, setHovered] = useState(false)
 
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-end pb-6 cursor-pointer">
-                <h3 className="text-white text-lg md:text-xl font-onest text-center px-6 transition-all duration-500 transform translate-y-10 group-hover:translate-y-0 group-hover:scale-110">
-                  {item.titulo}
-                </h3>
+            return (
+              <div
+                key={index}
+                onTouchStart={() => {
+                  setHovered(true)
+                  setTimeout(() => setHovered(false), 1000)
+                }}
+                className={`relative overflow-hidden rounded-xl transition-all duration-500 border border-gray-200 
+        shadow-xl ${hovered ? "shadow-2xl scale-[1.03]" : "group hover:shadow-2xl hover:scale-[1.03]"}`
+                }
+              >
+                <img
+                  src={item.src}
+                  alt={item.titulo}
+                  className={`w-full h-full object-cover transition-transform duration-500 
+          ${hovered ? "scale-110 blur-sm" : "group-hover:scale-110 group-hover:blur-sm"}`}
+                />
+
+                <div
+                  className={`absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent transition-opacity duration-500 flex flex-col items-center justify-end pb-6 cursor-pointer 
+          ${hovered ? "opacity-100" : "group-hover:opacity-100 opacity-0"}`}
+                >
+                  <h3
+                    className={`text-white text-lg md:text-xl font-onest text-center px-6 transition-all duration-500 
+            ${hovered ? "translate-y-0 scale-110" : "translate-y-10 group-hover:translate-y-0 group-hover:scale-110"}`}
+                  >
+                    {item.titulo}
+                  </h3>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </Container>
     </section>

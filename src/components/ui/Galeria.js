@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from "react"
 import Container from "@/components/ui/Container"
 
 const galeria = [
@@ -10,12 +11,19 @@ const galeria = [
   { src: "/img/imagesGoMich/Fondo.webp", titulo: "Paracho" },
   { src: "/img/imagesGoMich/mich.webp", titulo: "Tzintzuntzan" },
   { src: "/img/imagesGoMich/Fondo.jpg", titulo: "Tacámbaro" },
-  { src: "/img/imagesGoMich/Fondo.webp", titulo: "Santa Clara del Cobre" },
+  { src: "/img/imagesGoMich/Fondo.webp", titulo: "Maravatío" },
   { src: "/img/imagesGoMich/mich.webp", titulo: "Angangueo" },
   { src: "/img/imagesGoMich/Fondo.jpg", titulo: "Tlalpujahua" }
 ]
 
 const Galeria = () => {
+  const [hoveredIndex, setHoveredIndex] = useState(null)
+
+  const handleTouch = (index) => {
+    setHoveredIndex(index)
+    setTimeout(() => setHoveredIndex(null), 1000)
+  }
+
   return (
     <section className="py-12 bg-gray-100">
       <Container>
@@ -25,21 +33,30 @@ const Galeria = () => {
         <div className="w-50 h-[5px] bg-accent mb-6"></div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-          {galeria.map((item, index) => (
-            <div 
-              key={index} 
-              className="relative overflow-hidden rounded-lg group transition-all duration-500 shadow-sm hover:scale-105 cursor-pointer"
-            >
-              <img 
-                src={item.src} 
-                alt={item.titulo} 
-                className="w-full h-[140px] sm:h-[180px] lg:h-[200px] object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 flex items-center justify-center text-white text-lg font-onest bg-accent opacity-0 group-hover:opacity-80 transition-all duration-500">
-                {item.titulo}
+          {galeria.map((item, index) => {
+            const isTouched = hoveredIndex === index
+            return (
+              <div
+                key={index}
+                onTouchStart={() => handleTouch(index)}
+                className={`relative overflow-hidden rounded-lg transition-all duration-500 shadow-sm cursor-pointer 
+                  ${isTouched ? "scale-105" : "group hover:scale-105"}`}
+              >
+                <img
+                  src={item.src}
+                  alt={item.titulo}
+                  className={`w-full h-[140px] sm:h-[180px] lg:h-[200px] object-cover transition-transform duration-500 
+                    ${isTouched ? "scale-110" : "group-hover:scale-110"}`}
+                />
+                <div
+                  className={`absolute inset-0 flex items-center justify-center text-white text-lg font-onest bg-accent transition-all duration-500 
+                    ${isTouched ? "opacity-80" : "opacity-0 group-hover:opacity-80"}`}
+                >
+                  {item.titulo}
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </Container>
     </section>

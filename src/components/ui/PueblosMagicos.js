@@ -41,7 +41,18 @@ const PueblosMagicos = () => {
         >
           {pueblos.map((item, index) => (
             <SwiperSlide key={index}>
-              <div className="relative overflow-hidden rounded-xl shadow-md group cursor-pointer">
+              <div
+                className="relative overflow-hidden rounded-xl shadow-md group cursor-pointer"
+                onTouchStart={(e) => {
+                  const target = e.currentTarget
+                  if (target && target.classList) {
+                    target.classList.add('hovered')
+                    setTimeout(() => {
+                      target.classList.remove('hovered')
+                    }, 500)
+                  }
+                }}                
+              >
                 <img
                   src={item.src}
                   alt={item.titulo}
