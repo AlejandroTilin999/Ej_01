@@ -62,6 +62,8 @@ const RestaurantsPage = () => {
   const [search, setSearch] = useState('')
   const [favorites, setFavorites] = useState({})
   const [randomPrices, setRandomPrices] = useState([])
+  const [order, setOrder] = useState("Popularidad")
+  const [dropdownOpen, setDropdownOpen] = useState(false)
 
   const restaurants = [
     {
@@ -206,10 +208,24 @@ const RestaurantsPage = () => {
     setRandomPrices(prices)
   }, [])
 
-  const filtered = restaurants.filter(r => {
-    return r.name.toLowerCase().includes(search.toLowerCase())
+  const sorted = [...restaurants].sort((a, b) => {
+    switch (order) {
+      case "Mejor valorado":
+        return b.rating - a.rating
+      case "Precio (más bajos primero)":
+        return (randomPrices[restaurants.indexOf(a)]?.price || 0) - (randomPrices[restaurants.indexOf(b)]?.price || 0)
+      case "Duración (de menor a mayor)":
+        return a.name.length - b.name.length
+      case "Duración (de mayor a menor)":
+        return b.name.length - a.name.length
+      default:
+        return 0
+    }
   })
 
+  const filtered = sorted.filter(r =>
+    r.name.toLowerCase().includes(search.toLowerCase())
+  )
   return (
     <>
       <div className="py-8">
@@ -294,11 +310,48 @@ const RestaurantsPage = () => {
 
             </div>
           </div>
-
-
-
         </div>
       </div>
+      <Container>
+        <div className="mt-6 bg-white rounded-lg shadow px-4 py-3 flex flex-wrap items-center justify-between gap-4">
+          <p className="text-gray-700 font-onest text-sm md:text-base">
+            {filtered.length} restaurantes encontrados
+          </p>
+
+          <div className="flex items-center gap-2">
+            <div className="border rounded-full flex items-center overflow-hidden text-sm">
+              <button className="px-3 py-1 bg-gray-100 text-gray-700">Cuadrícula</button>
+              <span className="text-gray-400">|</span>
+              <button className="px-3 py-1 text-gray-500 hover:text-gray-700">Mapa</button>
+            </div>
+
+            <div className="relative">
+              <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="border rounded-full px-4 py-1 text-sm font-onest bg-white shadow hover:bg-gray-50"
+              >
+                Ordenar
+              </button>
+              {dropdownOpen && (
+                <div className="absolute right-0 mt-2 w-52 bg-white rounded-lg shadow-lg text-sm font-onest z-50">
+                  {["Popularidad", "Mejor valorado", "Precio (más bajos primero)", "Novedad", "Duración (de menor a mayor)", "Duración (de mayor a menor)"].map((option, idx) => (
+                    <div
+                      key={idx}
+                      onClick={() => {
+                        setOrder(option)
+                        setDropdownOpen(false)
+                      }}
+                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                    >
+                      {option}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </Container>
       <Container className="py-8  text-center">
 
 

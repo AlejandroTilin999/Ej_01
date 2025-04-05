@@ -182,6 +182,8 @@ export default function AccommodationPage() {
   const [selectedHotel, setSelectedHotel] = useState(null)
   const [favorites, setFavorites] = useState({})
   const [randomPrices, setRandomPrices] = useState([])
+  const [order, setOrder] = useState("Popularidad")
+  const [dropdownOpen, setDropdownOpen] = useState(false)
   const modalRef = useRef()
 
   useEffect(() => {
@@ -206,7 +208,22 @@ export default function AccommodationPage() {
     setRandomPrices(newPrices)
   }, [])
 
-  const filteredHotels = accommodations.filter((h) =>
+  const sortedHotels = [...accommodations].sort((a, b) => {
+    switch (order) {
+      case "Mejor valorado":
+        return b.rating - a.rating
+      case "Precio (más bajos primero)":
+        return (randomPrices[accommodations.indexOf(a)]?.price || 0) - (randomPrices[accommodations.indexOf(b)]?.price || 0)
+      case "Duración (de menor a mayor)":
+        return a.name.length - b.name.length
+      case "Duración (de mayor a menor)":
+        return b.name.length - a.name.length
+      default:
+        return 0
+    }
+  })
+
+  const filteredHotels = sortedHotels.filter((h) =>
     h.name.toLowerCase().includes(search.toLowerCase())
   )
 
@@ -229,7 +246,7 @@ export default function AccommodationPage() {
 
           <div className="absolute inset-0 z-20 text-white w-full flex flex-col justify-end ">
             <div className="max-w-[1200px] 2xl:max-w-[1440px] mx-auto w-full h-full px-6 md:px-11">
-
+              {/* HERO CONTENT */}
               <div className="hidden lg:flex flex-col justify-end h-full pb-14">
                 <h1 className="text-6xl font-onest drop-shadow-md mb-10 text-left">
                   Alojamientos
@@ -296,6 +313,47 @@ export default function AccommodationPage() {
           </div>
         </div>
       </div>
+      {/* CONTROLES FILTRO DESPUÉS DE HERO */}
+      <Container>
+        <div className="mt-6 bg-white rounded-lg shadow px-4 py-3 flex flex-wrap items-center justify-between gap-4">
+          <p className="text-gray-700 font-onest text-sm md:text-base">
+            {filteredHotels.length} alojamientos en Michoacán
+          </p>
+
+          <div className="flex items-center gap-2">
+            <div className="border rounded-full flex items-center overflow-hidden text-sm">
+              <button className="px-3 py-1 bg-gray-100 text-gray-700">Cuadrícula</button>
+              <span className="text-gray-400">|</span>
+              <button className="px-3 py-1 text-gray-500 hover:text-gray-700">Mapa</button>
+            </div>
+
+            <div className="relative">
+              <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="border rounded-full px-4 py-1 text-sm font-onest bg-white shadow hover:bg-gray-50"
+              >
+                Ordenar
+              </button>
+              {dropdownOpen && (
+                <div className="absolute right-0 mt-2 w-52 bg-white rounded-lg shadow-lg text-sm font-onest z-50">
+                  {["Popularidad", "Mejor valorado", "Precio (más bajos primero)", "Novedad", "Duración (de menor a mayor)", "Duración (de mayor a menor)"].map((option, idx) => (
+                    <div
+                      key={idx}
+                      onClick={() => {
+                        setOrder(option)
+                        setDropdownOpen(false)
+                      }}
+                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                    >
+                      {option}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </Container>
 
 
       <Container className="py-8">
