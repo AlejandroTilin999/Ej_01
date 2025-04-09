@@ -3,6 +3,19 @@
 import { useState } from 'react'
 import Container from '@/components/ui/Container'
 
+const getCategoryColor = (category) => {
+  switch (category) {
+    case "TURISMO":
+      return "bg-accent"
+    case "CULTURA":
+      return "bg-secondary"
+    case "TRADICIONES":
+      return "bg-primary"
+    default:
+      return "bg-secondary-accent"
+  }
+}
+
 const Noticias = () => {
   const noticias = [
     {
@@ -84,6 +97,22 @@ const Noticias = () => {
       categoria: "Tradiciones",
       municipio: "Morelia",
       imagen: "/img/imagesGoMich/mich.webp"
+    },
+    {
+      titulo: "Nueva experiencia cultural en Tepotzotlán",
+      fecha: "Junio 2025",
+      descripcion: "Descubre la tradición y el arte en un recorrido por las calles históricas.",
+      categoria: "Cultura",
+      municipio: "Tepotzotlán",
+      imagen: "/img/imagesGoMich/mich.webp"
+    },
+    {
+      titulo: "Aventura al aire libre en la Sierra Madre",
+      fecha: "Julio 2025",
+      descripcion: "Vive una experiencia única de ecoturismo y conexión con la naturaleza.",
+      categoria: "Turismo",
+      municipio: "Sierra Madre",
+      imagen: "/img/imagesGoMich/Fondo.webp"
     }
   ]
 
@@ -135,7 +164,6 @@ const Noticias = () => {
                   </div>
                 </div>
               </div>
-
               <div className="hidden sm:flex lg:hidden flex-col justify-end h-full pb-10">
                 <h1 className="text-5xl font-onest drop-shadow-md mb-8 text-left">Noticias</h1>
                 <div className="grid grid-cols-4 gap-x-6 text-left text-sm font-onest">
@@ -157,7 +185,6 @@ const Noticias = () => {
                   </div>
                 </div>
               </div>
-
               <div className="flex sm:hidden flex-col justify-end h-full pb-9 text-center">
                 <h1 className="text-4xl font-onest drop-shadow-md mb-6">Noticias</h1>
                 <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-xs font-onest">
@@ -171,46 +198,27 @@ const Noticias = () => {
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </div>
-
       <Container>
         <div className="mt-6 bg-white rounded-lg shadow px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-700 font-onest text-sm md:text-base">
-            {sortedNoticias.length} noticias encontradas
-          </p>
+          <p className="text-gray-700 font-onest text-sm md:text-base">{sortedNoticias.length} noticias encontradas</p>
           <div className="flex gap-2 items-center flex-wrap justify-center sm:justify-start cursor-pointer">
             {["Todas", "Turismo", "Cultura", "Tradiciones"].map(cat => (
-              <button
-                key={cat}
-                className={`px-3 py-1 rounded-full text-sm font-onest border ${categoria === cat ? "bg-accent text-white" : "text-gray-600 bg-gray-100 cursor-pointer"
-                  } hover:bg-accent hover:text-white transition cursor-pointer`}
-                onClick={() => setCategoria(cat)}
-              >
+              <button key={cat} className={`px-3 py-1 rounded-full text-sm font-onest border ${categoria === cat ? "bg-accent text-white" : "text-gray-600 bg-gray-100"} hover:bg-accent hover:text-white transition cursor-pointer`} onClick={() => setCategoria(cat)}>
                 {cat}
               </button>
             ))}
             <div className="relative">
-              <button
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="border rounded-full px-4 py-1 text-sm font-onest bg-white shadow hover:bg-gray-50 cursor-pointer"
-              >
+              <button onClick={() => setDropdownOpen(!dropdownOpen)} className="border rounded-full px-4 py-1 text-sm font-onest bg-white shadow hover:bg-gray-50 cursor-pointer">
                 Ordenar
               </button>
               {dropdownOpen && (
-                <div className="absolute right-0 mt-2 w-full sm:w-52 bg-white rounded-lg shadow-lg text-sm font-onest z-50 ">
+                <div className="absolute right-0 mt-2 w-full sm:w-52 bg-white rounded-lg shadow-lg text-sm font-onest z-50">
                   {["Novedad", "A-Z", "Antiguas primero"].map((option, idx) => (
-                    <div
-                      key={idx}
-                      onClick={() => {
-                        setOrder(option)
-                        setDropdownOpen(false)
-                      }}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                    >
+                    <div key={idx} onClick={() => { setOrder(option); setDropdownOpen(false) }} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
                       {option}
                     </div>
                   ))}
@@ -220,51 +228,24 @@ const Noticias = () => {
           </div>
         </div>
       </Container>
-
       <section className="py-16 relative">
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[2px] h-full bg-accent z-0" />
         <Container>
-          <div className="grid md:grid-cols-2 gap-16 relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
             {sortedNoticias.map((nota, i) => (
-              <div
-                key={i}
-                className={`bg-white shadow-xl rounded-3xl p-6 relative flex flex-col md:flex-row gap-6 items-center md:items-start ${i % 2 === 0 ? "md:justify-self-end" : "md:justify-self-start"
-                  }`}
-              >
-                <div className="relative w-full md:w-48 lg:w-64 aspect-square flex-shrink-0">
-                  <img
-                    src={nota.imagen}
-                    alt={nota.titulo}
-                    className="w-full h-full object-cover rounded-full md:rounded-lg"
-                  />
-                  <span
-                    className={`absolute z-10
-                    top-4 left-1/2 transform -translate-x-1/2
-                    md:top-2 md:left-2 md:transform-none
-                    px-3 py-1 text-xs font-onest text-white rounded-full
-                    ${nota.categoria === "Turismo"
-                        ? "bg-green-500"
-                        : nota.categoria === "Cultura"
-                          ? "bg-rose-500"
-                          : "bg-blue-600"
-                      }
-                  `}
-                  >
-                    {nota.categoria.toUpperCase()}
-                  </span>
-                </div>
-                <div className="flex-1 text-center md:text-left">
-                  <p className="text-sm text-accent font-onest uppercase mb-1">{nota.fecha}</p>
-                  <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-2">{nota.titulo}</h3>
-                  <p className="text-sm text-gray-600 mb-3">{nota.descripcion}</p>
-                  <button className="bg-primary text-white text-sm px-4 py-2 rounded-full hover:bg-primary/90 transition block mx-auto md:mx-0 cursor-pointer">
-                    Ver más
-                  </button>
+              <div key={i} className="relative rounded-xl overflow-hidden group cursor-pointer transition-all duration-300 h-[250px]">
+                <img src={nota.imagen} alt={nota.titulo} className="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-black/50"></div>
+                <div className="relative z-10 p-6 flex flex-col justify-end h-full">
+                  <div className="flex items-center gap-2">
+                    <span className={`px-3 py-1 text-xs font-onest text-white rounded-full ${getCategoryColor(nota.categoria.toUpperCase())}`}>
+                      {nota.categoria.toUpperCase()}
+                    </span>
+                    <span className="text-white text-xs opacity-80">{nota.municipio}</span>
+                  </div>
+                  <h3 className="text-white font-onest text-lg sm:text-xl mt-2 leading-tight">{nota.titulo}</h3>
+                  <p className="text-sm text-gray-300 mt-1">{nota.descripcion}</p>
                 </div>
               </div>
-
-
-
             ))}
           </div>
         </Container>

@@ -366,7 +366,7 @@ const RestaurantsPage = () => {
             return (
               <div
                 key={i}
-                className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 flex flex-col overflow-hidden border border-gray-100 relative"
+                className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 flex flex-col overflow-hidden border border-gray-100 relative hover:scale-105 active:scale-105"
               >
                 <div className="relative w-full h-44 overflow-hidden group">
                   <img
@@ -398,7 +398,7 @@ const RestaurantsPage = () => {
 
                 <div className="p-4 text-left flex flex-col justify-between flex-grow">
                   <div>
-                    <h3 className="text-lg font-onest text-primary leading-snug">{rest.name}</h3>
+                    <h3 className="text-lg font-bold text-primary leading-snug">{rest.name}</h3>
                     <div className="flex items-center gap-2 text-yellow-400 text-sm">
                       {'★'.repeat(Math.floor(rest.rating))}{rest.rating % 1 >= 0.5 && '✮'}{'☆'.repeat(5 - Math.floor(rest.rating) - (rest.rating % 1 >= 0.5 ? 1 : 0))}
                       <span className="text-gray-500 text-xs">({rest.rating.toFixed(1)})</span>

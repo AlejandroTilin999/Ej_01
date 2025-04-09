@@ -369,7 +369,8 @@ export default function AccommodationPage() {
             return (
               <div
                 key={i}
-                className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden border border-gray-100 relative"
+                className="bg-white rounded-2xl shadow-md hover:shadow-xl border border-gray-100 overflow-hidden relative
+                          flex flex-col transition-all duration-300 transform hover:scale-105 active:scale-105 focus:scale-105"
                 onClick={() => setSelectedHotel(hotel)}
               >
                 <div className="relative w-full h-44 overflow-hidden">
@@ -404,7 +405,7 @@ export default function AccommodationPage() {
 
                 <div className="p-4 text-left flex flex-col justify-between flex-grow">
                   <div>
-                    <h3 className="text-lg font-onest text-primary leading-snug">{hotel.name}</h3>
+                    <h3 className="text-lg font-bold text-primary leading-snug">{hotel.name}</h3>
                     <div className="flex items-center gap-2 text-yellow-400 text-sm">
                       {renderStars(hotel.rating)}
                       <span className="text-gray-500 text-xs">({hotel.rating.toFixed(1)})</span>
