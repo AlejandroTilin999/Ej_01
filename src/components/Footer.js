@@ -44,7 +44,7 @@ const Footer = () => {
             <li><Link href="/alojamientos" className="hover:text-gray-300 cursor-pointer">Alojamientos</Link></li>
             <li><Link href="#" className="hover:text-gray-300 cursor-pointer">Actividades</Link></li>
             <li><Link href="#" className="hover:text-gray-300 cursor-pointer">Municipios</Link></li>
-            <li><Link href="#" className="hover:text-gray-300 cursor-pointer">Blog</Link></li>
+            <li><Link href="/noticias" className="hover:text-gray-300 cursor-pointer">Blog</Link></li>
           </ul>
         </div>
 
@@ -55,7 +55,7 @@ const Footer = () => {
             <li><Link href="/alojamientos" className="hover:text-gray-300 cursor-pointer">Alojamientos</Link></li>
             <li><Link href="#" className="hover:text-gray-300 cursor-pointer">Actividades</Link></li>
             <li><Link href="#" className="hover:text-gray-300 cursor-pointer">Municipios</Link></li>
-            <li><Link href="#" className="hover:text-gray-300 cursor-pointer">Blog</Link></li>
+            <li><Link href="/noticias" className="hover:text-gray-300 cursor-pointer">Blog</Link></li>
           </ul>
         </div>
 

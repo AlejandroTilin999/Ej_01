@@ -7,7 +7,7 @@ import Container from '@/components/ui/Container'
 
 const Navbar = () => {
   const pathname = usePathname()
-  const isAccommodationPage = pathname.startsWith('/alojamientos') || pathname.startsWith('/restaurantes')
+  const isAccommodationPage = pathname.startsWith('/alojamientos') || pathname.startsWith('/restaurantes') || pathname.startsWith('/noticias')
 
 
   const [isOpen, setIsOpen] = useState(false)
@@ -43,7 +43,7 @@ const Navbar = () => {
           <li><Link href="/alojamientos" className="cursor-pointer hover:text-accent transition-colors duration-300">Alojamientos</Link></li>
           <li><Link href="#" className="cursor-pointer hover:text-accent transition-colors duration-300">Actividades</Link></li>
           <li><Link href="#" className="cursor-pointer hover:text-accent transition-colors duration-300">Municipios</Link></li>
-          <li><Link href="#" className="cursor-pointer hover:text-accent transition-colors duration-300">Blog</Link></li>
+          <li><Link href="/noticias" className="cursor-pointer hover:text-accent transition-colors duration-300">Blog</Link></li>
         </ul>
 
         <div className="hidden lg:flex items-center gap-3">
@@ -76,7 +76,7 @@ const Navbar = () => {
             <li className="py-2 border-b"><Link href="/alojamientos" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Alojamientos</Link></li>
             <li className="py-2 border-b"><Link href="#" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Actividades</Link></li>
             <li className="py-2 border-b"><Link href="#" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Municipios</Link></li>
-            <li className="py-2 border-b"><Link href="#" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Blog</Link></li>
+            <li className="py-2 border-b"><Link href="/noticias" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Blog</Link></li>
           </ul>
 
           <div className="flex flex-col gap-3 px-6 py-4 items-center">

@@ -313,7 +313,7 @@ export default function AccommodationPage() {
           </div>
         </div>
       </div>
-      {/* CONTROLES FILTRO DESPUÉS DE HERO */}
+      
       <Container>
         <div className="mt-6 bg-white rounded-lg shadow px-4 py-3 flex flex-wrap items-center justify-between gap-4">
           <p className="text-gray-700 font-onest text-sm md:text-base">
