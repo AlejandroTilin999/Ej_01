@@ -113,7 +113,8 @@ const Noticias = () => {
       categoria: "Turismo",
       municipio: "Sierra Madre",
       imagen: "/img/imagesGoMich/Fondo.webp"
-    }
+    },
+    
   ]
 
   const [order, setOrder] = useState("Novedad")
@@ -234,7 +235,7 @@ const Noticias = () => {
             {sortedNoticias.map((nota, i) => (
               <div key={i} className="relative rounded-xl overflow-hidden group cursor-pointer transition-all duration-300 h-[250px]">
                 <img src={nota.imagen} alt={nota.titulo} className="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-black/50"></div>
+                <div className="absolute inset-0 bg-black/50 cursor-pointer"></div>
                 <div className="relative z-10 p-6 flex flex-col justify-end h-full">
                   <div className="flex items-center gap-2">
                     <span className={`px-3 py-1 text-xs font-onest text-white rounded-full ${getCategoryColor(nota.categoria.toUpperCase())}`}>

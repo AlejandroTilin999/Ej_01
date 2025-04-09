@@ -42,8 +42,8 @@ const Footer = () => {
           <ul className="space-y-1 text-sm">
             <li><Link href="/restaurantes" className="hover:text-gray-300 cursor-pointer">Restaurantes</Link></li>
             <li><Link href="/alojamientos" className="hover:text-gray-300 cursor-pointer">Alojamientos</Link></li>
-            <li><Link href="#" className="hover:text-gray-300 cursor-pointer">Actividades</Link></li>
-            <li><Link href="#" className="hover:text-gray-300 cursor-pointer">Municipios</Link></li>
+            <li><Link href="/actividades" className="hover:text-gray-300 cursor-pointer">Actividades</Link></li>
+            <li><Link href="/municipios" className="hover:text-gray-300 cursor-pointer">Municipios</Link></li>
             <li><Link href="/noticias" className="hover:text-gray-300 cursor-pointer">Blog</Link></li>
           </ul>
         </div>
@@ -53,8 +53,8 @@ const Footer = () => {
           <ul className="space-y-1 text-sm">
             <li><Link href="/restaurantes" className="hover:text-gray-300 cursor-pointer">Restaurantes</Link></li>
             <li><Link href="/alojamientos" className="hover:text-gray-300 cursor-pointer">Alojamientos</Link></li>
-            <li><Link href="#" className="hover:text-gray-300 cursor-pointer">Actividades</Link></li>
-            <li><Link href="#" className="hover:text-gray-300 cursor-pointer">Municipios</Link></li>
+            <li><Link href="/actividades" className="hover:text-gray-300 cursor-pointer">Actividades</Link></li>
+            <li><Link href="/municipios" className="hover:text-gray-300 cursor-pointer">Municipios</Link></li>
             <li><Link href="/noticias" className="hover:text-gray-300 cursor-pointer">Blog</Link></li>
           </ul>
         </div>

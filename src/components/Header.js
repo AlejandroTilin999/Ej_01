@@ -7,7 +7,7 @@ import Container from '@/components/ui/Container'
 
 const Navbar = () => {
   const pathname = usePathname()
-  const isAccommodationPage = pathname.startsWith('/alojamientos') || pathname.startsWith('/restaurantes') || pathname.startsWith('/noticias')
+  const isAccommodationPage = pathname.startsWith('/alojamientos') || pathname.startsWith('/restaurantes') || pathname.startsWith('/noticias') || pathname.startsWith('/actividades') || pathname.startsWith('/municipios')
 
 
   const [isOpen, setIsOpen] = useState(false)
@@ -41,8 +41,8 @@ const Navbar = () => {
         <ul className={`hidden lg:flex items-center space-x-6 font-semibold text-lg md:text-base sm:text-sm ${linkColor}`}>
           <li><Link href="/restaurantes" className="cursor-pointer hover:text-accent transition-colors duration-300">Restaurantes</Link></li>
           <li><Link href="/alojamientos" className="cursor-pointer hover:text-accent transition-colors duration-300">Alojamientos</Link></li>
-          <li><Link href="#" className="cursor-pointer hover:text-accent transition-colors duration-300">Actividades</Link></li>
-          <li><Link href="#" className="cursor-pointer hover:text-accent transition-colors duration-300">Municipios</Link></li>
+          <li><Link href="/actividades" className="cursor-pointer hover:text-accent transition-colors duration-300">Actividades</Link></li>
+          <li><Link href="/municipios" className="cursor-pointer hover:text-accent transition-colors duration-300">Municipios</Link></li>
           <li><Link href="/noticias" className="cursor-pointer hover:text-accent transition-colors duration-300">Blog</Link></li>
         </ul>
 
@@ -74,8 +74,8 @@ const Navbar = () => {
           <ul className="flex flex-col px-6 text-center text-primary">
             <li className="py-3 border-b"><Link href="/restaurantes" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Restaurantes</Link></li>
             <li className="py-2 border-b"><Link href="/alojamientos" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Alojamientos</Link></li>
-            <li className="py-2 border-b"><Link href="#" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Actividades</Link></li>
-            <li className="py-2 border-b"><Link href="#" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Municipios</Link></li>
+            <li className="py-2 border-b"><Link href="/actividades" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Actividades</Link></li>
+            <li className="py-2 border-b"><Link href="/municipios" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Municipios</Link></li>
             <li className="py-2 border-b"><Link href="/noticias" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Blog</Link></li>
           </ul>
 
