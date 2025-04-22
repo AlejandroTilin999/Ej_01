@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from "react"
+import Container from "@/components/ui/Container"
 
 import HeartIcon from '@/assets/icons/HeartIcon'
 import HeartFilledIcon from '@/assets/icons/HeartFilledIcon'
@@ -10,7 +11,6 @@ import SpicyIcon from '@/assets/icons/SpicyIcon'
 import AccessibilityIcon from '@/assets/icons/AccessibilityIcon'
 import LocationIcon from '@/assets/icons/LocationIcon'
 import WifiIcon from '@/assets/icons/WifiIcon'
-import Container from "@/components/ui/Container"
 import { TakeawayIcon } from '@/assets/icons/TakeawayIcon'
 import { DeliveryIcon } from '@/assets/icons/DeliveryIcon'
 import { ReservationIcon } from '@/assets/icons/ReservationIcon'
@@ -21,6 +21,9 @@ import { MusicIcon } from '@/assets/icons/MusicIcon'
 import { ClockIcon } from '@/assets/icons/ClockIcon'
 import { Open24Icon } from '@/assets/icons/Open24Icon'
 
+import restaurantes from '@/data/restaurantes'
+import { useFavorites } from '@/hooks/useFavorites'
+import { sortRestaurants } from '@/utils/sortRestaurants'
 
 const IconList = ({ rest }) => {
   const icons = [
@@ -60,168 +63,20 @@ const IconList = ({ rest }) => {
 
 const RestaurantsPage = () => {
   const [search, setSearch] = useState('')
-  const [favorites, setFavorites] = useState({})
   const [randomPrices, setRandomPrices] = useState([])
   const [order, setOrder] = useState("Popularidad")
   const [dropdownOpen, setDropdownOpen] = useState(false)
-
-  const restaurants = [
-    {
-      name: "El Sazón Michoacano",
-      municipio: "Morelia",
-      categoria: "Comida tradicional",
-      image: "/img/imagesGoMich/restaurant.jpeg",
-      descripcion: "Disfruta de platillos típicos con sazón casero.",
-      rating: 4.6,
-      tradicional: true,
-      bar: false,
-      picante: true,
-      accesible: true,
-      takeaway: true,
-      delivery: false,
-      reservaciones: true,
-      terraza: false,
-      estacionamiento: true,
-      petFriendly: false,
-      wifi: true,
-      musica: false,
-      abierto: true,
-      horario24: false
-    },
-    {
-      name: "La Terraza del Lago",
-      municipio: "Pátzcuaro",
-      categoria: "Pescados y mariscos",
-      image: "/img/imagesGoMich/restaurant.jpeg",
-      descripcion: "Cocina regional con vista al lago de Pátzcuaro.",
-      rating: 4.8,
-      tradicional: true,
-      bar: true,
-      picante: false,
-      accesible: true,
-      takeaway: false,
-      delivery: false,
-      reservaciones: true,
-      terraza: true,
-      estacionamiento: true,
-      petFriendly: true,
-      wifi: true,
-      musica: true,
-      abierto: true,
-      horario24: false
-    },
-    {
-      name: "Casa Mezcal",
-      municipio: "Uruapan",
-      categoria: "Bar & Mezcalería",
-      image: "/img/imagesGoMich/restaurant.jpeg",
-      descripcion: "Ambiente bohemio con mixología michoacana.",
-      rating: 4.5,
-      tradicional: false,
-      bar: true,
-      picante: true,
-      accesible: false,
-      takeaway: true,
-      delivery: true,
-      reservaciones: true,
-      terraza: true,
-      estacionamiento: false,
-      petFriendly: true,
-      wifi: true,
-      musica: true,
-      abierto: true,
-      horario24: true
-    },
-    {
-      name: "Antojitos Lupita",
-      municipio: "Zamora",
-      categoria: "Gorditas y enchiladas",
-      image: "/img/imagesGoMich/restaurant.jpeg",
-      descripcion: "Comida económica y deliciosa en el centro.",
-      rating: 4.2,
-      tradicional: true,
-      bar: false,
-      picante: true,
-      accesible: false,
-      takeaway: true,
-      delivery: true,
-      reservaciones: false,
-      terraza: false,
-      estacionamiento: false,
-      petFriendly: false,
-      wifi: false,
-      musica: false,
-      abierto: true,
-      horario24: false
-    },
-    {
-      name: "Asados El Profe",
-      municipio: "Lázaro Cárdenas",
-      categoria: "Cortes y carnes",
-      image: "/img/imagesGoMich/restaurant.jpeg",
-      descripcion: "Especialistas en carnes al carbón con estilo.",
-      rating: 4.7,
-      tradicional: false,
-      bar: true,
-      picante: true,
-      accesible: true,
-      takeaway: true,
-      delivery: false,
-      reservaciones: true,
-      terraza: false,
-      estacionamiento: true,
-      petFriendly: true,
-      wifi: true,
-      musica: false,
-      abierto: true,
-      horario24: false
-    },
-    {
-      name: "Sabores del Valle",
-      municipio: "Zamora",
-      categoria: "Comida campirana",
-      image: "/img/imagesGoMich/restaurant.jpeg",
-      descripcion: "Platillos de rancho con ingredientes orgánicos.",
-      rating: 4.2,
-      tradicional: true,
-      bar: false,
-      picante: false,
-      accesible: true,
-      takeaway: false,
-      delivery: false,
-      reservaciones: true,
-      terraza: true,
-      estacionamiento: true,
-      petFriendly: false,
-      wifi: true,
-      musica: false,
-      abierto: true,
-      horario24: false
-    }
-  ]
+  const { favorites, toggleFavorite, isFavorite } = useFavorites()
 
   useEffect(() => {
-    const prices = restaurants.map(() => ({
+    const prices = restaurantes.map(() => ({
       price: Math.floor(Math.random() * 400) + 100,
       discount: Math.random() < 0.5 ? Math.floor(Math.random() * 30) + 10 : null
     }))
     setRandomPrices(prices)
   }, [])
 
-  const sorted = [...restaurants].sort((a, b) => {
-    switch (order) {
-      case "Mejor valorado":
-        return b.rating - a.rating
-      case "Precio (más bajos primero)":
-        return (randomPrices[restaurants.indexOf(a)]?.price || 0) - (randomPrices[restaurants.indexOf(b)]?.price || 0)
-      case "Duración (de menor a mayor)":
-        return a.name.length - b.name.length
-      case "Duración (de mayor a menor)":
-        return b.name.length - a.name.length
-      default:
-        return 0
-    }
-  })
+  const sorted = sortRestaurants(restaurantes, order, randomPrices)
 
   const filtered = sorted.filter(r =>
     r.name.toLowerCase().includes(search.toLowerCase())
@@ -229,80 +84,60 @@ const RestaurantsPage = () => {
   return (
     <>
       <div className="py-8">
-        <div className="relative w-full h-[220px] md:h-[260px] lg:h-[380px] overflow-hidden ">
+        <div className="relative w-full h-[220px] md:h-[260px] lg:h-[380px] overflow-hidden">
           <img
             src="/img/imagesGoMich/Restaurantes.jpeg"
             srcSet="/img/imagesGoMich/Restaurantes.jpeg 640w,
-          /img/imagesGoMich/Restaurantes.jpeg 1024w,
-          /img/imagesGoMich/Restaurantes.jpeg 1600w"
+              /img/imagesGoMich/Restaurantes.jpeg 1024w,
+              /img/imagesGoMich/Restaurantes.jpeg 1600w"
             sizes="(max-width: 768px) 100vw,
-         (max-width: 1024px) 100vw,
-         100vw"
+              (max-width: 1024px) 100vw,
+              100vw"
             alt="Restaurantes en Michoacán"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-black/50 z-10" />
-
-          <div className="absolute inset-0 z-20 text-white w-full flex flex-col justify-end ">
+          <div className="absolute inset-0 z-20 text-white w-full flex flex-col justify-end">
             <div className="max-w-[1200px] 2xl:max-w-[1440px] mx-auto w-full h-full px-6 md:px-11">
-
               <div className="hidden lg:flex flex-col justify-end h-full pb-14">
-                <h1 className="text-6xl font-onest drop-shadow-md mb-10 text-left">
-                  Restaurantes
-                </h1>
+                <h1 className="text-6xl font-bold drop-shadow-md mb-10 text-left">Restaurantes</h1>
                 <div className="grid grid-cols-4 gap-x-8 text-left text-base font-onest">
                   <div>
-                    <p className="text-2xl font-onest">108</p>
+                    <p className="text-2xl">108</p>
                     <p className="opacity-80">restaurantes registrados</p>
                   </div>
                   <div>
-                    <p className="text-2xl font-onest">4,838,688</p>
+                    <p className="text-2xl">4,838,688</p>
                     <p className="opacity-80">clientes han visitado</p>
                   </div>
                   <div>
-                    <p className="text-2xl font-onest">290,621</p>
+                    <p className="text-2xl">290,621</p>
                     <p className="opacity-80">opiniones reales</p>
                   </div>
                   <div>
-                    <p className="text-2xl font-onest">9.0 / 10</p>
+                    <p className="text-2xl">9.0 / 10</p>
                     <p className="opacity-80">así nos califican</p>
                   </div>
                 </div>
               </div>
 
-              <div className="hidden sm:flex lg:hidden flex-col justify-end h-full pb-10">
-                <h1 className="text-5xl font-onest drop-shadow-md mb-8 text-left">
-                  Restaurantes
-                </h1>
-                <div className="grid grid-cols-4 gap-x-6 text-left text-sm font-onest">
-                  <div className="hidden sm:block">
-                    <p className="text-xl font-onest">108</p>
+              <div className="py-10 lg:hidden flex-col justify-end h-full pb-20 sm:pb-16">
+                <h1 className="text-4xl sm:text-5xl font-onest drop-shadow-md mb-6 sm:mb-8 text-center sm:text-left">Restaurantes</h1>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-3 text-xs sm:text-sm font-onest text-center sm:text-left">
+                  <div>
+                    <p className="text-lg sm:text-xl">108</p>
                     <p className="opacity-80">restaurantes registrados</p>
                   </div>
                   <div>
-                    <p className="text-xl font-onest">4,838,688</p>
+                    <p className="text-lg sm:text-xl">4,838,688</p>
                     <p className="opacity-80">clientes han visitado</p>
                   </div>
-                  <div className="hidden sm:block">
-                    <p className="text-xl font-onest">290,621</p>
+                  <div>
+                    <p className="text-lg sm:text-xl">290,621</p>
                     <p className="opacity-80">opiniones reales</p>
                   </div>
                   <div>
-                    <p className="text-xl font-onest">9.0 / 10</p>
-                    <p className="opacity-80">así nos califican</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex sm:hidden flex-col justify-end h-full pb-9 text-center ">
-                <h1 className="text-4xl font-extrabold drop-shadow-md mb-6">Restaurantes</h1>
-                <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-xs font-onest">
-                  <div>
-                    <p className="text-xl font-onest">4,838,688</p>
-                    <p className="opacity-80">clientes han visitado</p>
-                  </div>
-                  <div>
-                    <p className="text-xl font-onest">9.0 / 10</p>
+                    <p className="text-lg sm:text-xl">9.0 / 10</p>
                     <p className="opacity-80">así nos califican</p>
                   </div>
                 </div>
@@ -312,6 +147,7 @@ const RestaurantsPage = () => {
           </div>
         </div>
       </div>
+
       <Container>
         <div className="mt-6 bg-white rounded-lg shadow px-4 py-3 flex flex-wrap items-center justify-between gap-4">
           <p className="text-gray-700 font-onest text-sm md:text-base">

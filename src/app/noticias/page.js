@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import Container from '@/components/ui/Container'
+import noticias from '@/data/noticias'
+import { sortNoticias } from '@/utils/sortNoticias'
 
 const getCategoryColor = (category) => {
   switch (category) {
@@ -17,135 +19,26 @@ const getCategoryColor = (category) => {
 }
 
 const Noticias = () => {
-  const noticias = [
-    {
-      titulo: "Inauguran lujoso hotel boutique en el centro de Morelia",
-      fecha: "Abril 2025",
-      descripcion: "Un nuevo espacio de hospedaje con vistas a la Catedral y servicios exclusivos.",
-      categoria: "Turismo",
-      municipio: "Morelia",
-      imagen: "/img/imagesGoMich/mich.webp"
-    },
-    {
-      titulo: "Pátzcuaro celebrará el Festival de la Cultura Purépecha",
-      fecha: "Marzo 2025",
-      descripcion: "Un evento con danzas tradicionales, gastronomía y exposiciones artesanales.",
-      categoria: "Cultura",
-      municipio: "Pátzcuaro",
-      imagen: "/img/imagesGoMich/Fondo.jpg"
-    },
-    {
-      titulo: "Nuevo recorrido turístico en Morelia",
-      fecha: "Febrero 2025",
-      descripcion: "Explora los rincones más emblemáticos con guías certificados.",
-      categoria: "Turismo",
-      municipio: "Morelia",
-      imagen: "/img/imagesGoMich/mich.webp"
-    },
-    {
-      titulo: "Pátzcuaro lanza festival gastronómico",
-      fecha: "Enero 2025",
-      descripcion: "Disfruta de los mejores platillos de la cocina purépecha.",
-      categoria: "Cultura",
-      municipio: "Pátzcuaro",
-      imagen: "/img/imagesGoMich/Fondo.jpg"
-    },
-    {
-      titulo: "Janitzio se prepara para la celebración de Día de Muertos",
-      fecha: "Octubre 2024",
-      descripcion: "Se esperan miles de visitantes para una de las celebraciones más emblemáticas de México.",
-      categoria: "Tradiciones",
-      municipio: "Janitzio",
-      imagen: "/img/imagesGoMich/viejitos.jpg"
-    },
-    {
-      titulo: "Descubren nuevo parque natural en la sierra",
-      fecha: "Mayo 2025",
-      descripcion: "Un espacio ecológico que promete ser el nuevo pulmón verde de la región.",
-      categoria: "Turismo",
-      municipio: "Sierra",
-      imagen: "/img/imagesGoMich/Fondo.jpg"
-    },
-    {
-      titulo: "Expo de arte contemporáneo en Morelia",
-      fecha: "Abril 2025",
-      descripcion: "Una muestra que reúne a artistas emergentes de diversas partes del país.",
-      categoria: "Cultura",
-      municipio: "Morelia",
-      imagen: "/img/imagesGoMich/mich.webp"
-    },
-    {
-      titulo: "Festival de música tradicional en Pátzcuaro",
-      fecha: "Marzo 2025",
-      descripcion: "Un encuentro de ritmos y sonidos autóctonos que enaltecen la cultura local.",
-      categoria: "Tradiciones",
-      municipio: "Pátzcuaro",
-      imagen: "/img/imagesGoMich/viejitos.jpg"
-    },
-    {
-      titulo: "Inauguración de centro cultural en Janitzio",
-      fecha: "Febrero 2025",
-      descripcion: "Espacio dedicado a la preservación y difusión de las artes locales.",
-      categoria: "Cultura",
-      municipio: "Janitzio",
-      imagen: "/img/imagesGoMich/Fondo.webp"
-    },
-    {
-      titulo: "Ruta gastronómica de comida tradicional en Morelia",
-      fecha: "Enero 2025",
-      descripcion: "Una experiencia culinaria que recorre los sabores típicos de la región.",
-      categoria: "Tradiciones",
-      municipio: "Morelia",
-      imagen: "/img/imagesGoMich/mich.webp"
-    },
-    {
-      titulo: "Nueva experiencia cultural en Tepotzotlán",
-      fecha: "Junio 2025",
-      descripcion: "Descubre la tradición y el arte en un recorrido por las calles históricas.",
-      categoria: "Cultura",
-      municipio: "Tepotzotlán",
-      imagen: "/img/imagesGoMich/mich.webp"
-    },
-    {
-      titulo: "Aventura al aire libre en la Sierra Madre",
-      fecha: "Julio 2025",
-      descripcion: "Vive una experiencia única de ecoturismo y conexión con la naturaleza.",
-      categoria: "Turismo",
-      municipio: "Sierra Madre",
-      imagen: "/img/imagesGoMich/Fondo.webp"
-    },
-    
-  ]
-
   const [order, setOrder] = useState("Novedad")
   const [categoria, setCategoria] = useState("Todas")
   const [dropdownOpen, setDropdownOpen] = useState(false)
 
-  const sortedNoticias = [...noticias]
-    .filter(n => categoria === "Todas" || n.categoria === categoria)
-    .sort((a, b) => {
-      switch (order) {
-        case "Alfabéticamente":
-          return a.titulo.localeCompare(b.titulo)
-        case "Antiguas primero":
-          return a.fecha.localeCompare(b.fecha)
-        case "Novedad":
-          return b.fecha.localeCompare(a.fecha)
-        default:
-          return 0
-      }
-    })
+  const sortedNoticias = sortNoticias(noticias, categoria, order)
 
   return (
     <>
       <div className="py-8">
         <div className="relative w-full h-[220px] md:h-[260px] lg:h-[380px] overflow-hidden">
-          <img src="/img/imagesGoMich/mich.webp" alt="Noticias" className="w-full h-full object-cover" />
+          <img
+            src="/img/imagesGoMich/mich.webp"
+            alt="Noticias"
+            className="w-full h-full object-cover"
+          />
           <div className="absolute inset-0 bg-black/50 z-10" />
           <div className="absolute inset-0 z-20 text-white w-full flex flex-col justify-end">
             <div className="max-w-[1200px] 2xl:max-w-[1440px] mx-auto w-full h-full px-6 md:px-11">
               <div className="hidden lg:flex flex-col justify-end h-full pb-14">
-                <h1 className="text-6xl font-onest drop-shadow-md mb-10 text-left">Noticias</h1>
+                <h1 className="text-6xl font-bold drop-shadow-md mb-10 text-left">Noticias</h1>
                 <div className="grid grid-cols-4 gap-x-8 text-left text-base font-onest">
                   <div>
                     <p className="text-2xl">146</p>
@@ -165,44 +58,35 @@ const Noticias = () => {
                   </div>
                 </div>
               </div>
-              <div className="hidden sm:flex lg:hidden flex-col justify-end h-full pb-10">
-                <h1 className="text-5xl font-onest drop-shadow-md mb-8 text-left">Noticias</h1>
-                <div className="grid grid-cols-4 gap-x-6 text-left text-sm font-onest">
-                  <div className="hidden sm:block">
-                    <p className="text-xl">146</p>
+
+              <div className="py-10 lg:hidden flex-col justify-end h-full pb-20 sm:pb-16">
+                <h1 className="text-4xl sm:text-5xl font-onest drop-shadow-md mb-6 sm:mb-8 text-center sm:text-left">Noticias</h1>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-3 text-xs sm:text-sm font-onest text-center sm:text-left">
+                  <div>
+                    <p className="text-lg sm:text-xl">146</p>
                     <p className="opacity-80">noticias publicadas</p>
                   </div>
                   <div>
-                    <p className="text-xl">312,489</p>
+                    <p className="text-lg sm:text-xl">312,489</p>
                     <p className="opacity-80">lectores mensuales</p>
                   </div>
-                  <div className="hidden sm:block">
-                    <p className="text-xl">24,891</p>
+                  <div>
+                    <p className="text-lg sm:text-xl">24,891</p>
                     <p className="opacity-80">comentarios registrados</p>
                   </div>
                   <div>
-                    <p className="text-xl">9.5 / 10</p>
+                    <p className="text-lg sm:text-xl">9.5 / 10</p>
                     <p className="opacity-80">nivel de interés</p>
                   </div>
                 </div>
               </div>
-              <div className="flex sm:hidden flex-col justify-end h-full pb-9 text-center">
-                <h1 className="text-4xl font-onest drop-shadow-md mb-6">Noticias</h1>
-                <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-xs font-onest">
-                  <div>
-                    <p className="text-xl">312,489</p>
-                    <p className="opacity-80">lectores mensuales</p>
-                  </div>
-                  <div>
-                    <p className="text-xl">9.5 / 10</p>
-                    <p className="opacity-80">nivel de interés</p>
-                  </div>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
       </div>
+
+
       <Container>
         <div className="mt-6 bg-white rounded-lg shadow px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-gray-700 font-onest text-sm md:text-base">{sortedNoticias.length} noticias encontradas</p>

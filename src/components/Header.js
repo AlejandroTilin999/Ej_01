@@ -2,13 +2,17 @@
 
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
-import Link from 'next/link'
 import Container from '@/components/ui/Container'
 
 const Navbar = () => {
   const pathname = usePathname()
-  const isAccommodationPage = pathname.startsWith('/alojamientos') || pathname.startsWith('/restaurantes') || pathname.startsWith('/noticias') || pathname.startsWith('/actividades') || pathname.startsWith('/municipios')
-
+  const isAccommodationPage = [
+    '/alojamientos',
+    '/restaurantes',
+    '/noticias',
+    '/actividades',
+    '/municipios'
+  ].some(path => pathname.startsWith(path))
 
   const [isOpen, setIsOpen] = useState(false)
   const [scrolling, setScrolling] = useState(false)
@@ -25,37 +29,37 @@ const Navbar = () => {
 
   const solidBg = isAccommodationPage || scrolling
   const linkColor = solidBg ? 'text-primary' : 'text-white'
-  const buttonTextColor = 'text-white'
+  const iconColor = solidBg ? 'text-primary' : 'text-white'
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${solidBg ? 'bg-white shadow-md' : 'bg-transparent'}`}>
       <Container className="flex items-center justify-between py-2">
-        <Link href="/" className="flex items-center cursor-pointer">
+        <a href="/" className="flex items-center cursor-pointer">
           <img
             src="/img/imagesGoMich/GoMichoacan.png"
             alt="GoMichoacán"
             className="w-[100px] md:w-[120px] lg:w-[140px]"
           />
-        </Link>
+        </a>
 
-        <ul className={`hidden lg:flex items-center space-x-6 font-semibold text-lg md:text-base sm:text-sm ${linkColor}`}>
-          <li><Link href="/restaurantes" className="cursor-pointer hover:text-accent transition-colors duration-300">Restaurantes</Link></li>
-          <li><Link href="/alojamientos" className="cursor-pointer hover:text-accent transition-colors duration-300">Alojamientos</Link></li>
-          <li><Link href="/actividades" className="cursor-pointer hover:text-accent transition-colors duration-300">Actividades</Link></li>
-          <li><Link href="/municipios" className="cursor-pointer hover:text-accent transition-colors duration-300">Municipios</Link></li>
-          <li><Link href="/noticias" className="cursor-pointer hover:text-accent transition-colors duration-300">Blog</Link></li>
+        <ul className={`hidden lg:flex items-center space-x-6 font-semibold text-lg ${linkColor}`}>
+          <li><a href="/restaurantes" className="hover:text-accent transition-colors duration-300">Restaurantes</a></li>
+          <li><a href="/alojamientos" className="hover:text-accent transition-colors duration-300">Alojamientos</a></li>
+          <li><a href="/actividades" className="hover:text-accent transition-colors duration-300">Actividades</a></li>
+          <li><a href="/municipios" className="hover:text-accent transition-colors duration-300">Municipios</a></li>
+          <li><a href="/noticias" className="hover:text-accent transition-colors duration-300">Blog</a></li>
         </ul>
 
         <div className="hidden lg:flex items-center gap-3">
-          <button className={`bg-accent ${buttonTextColor} px-4 py-1.5 rounded-md shadow hover:opacity-90 transition-opacity duration-300 cursor-pointer text-sm md:text-base`}>
-            Inicia Sesión
-          </button>
-          <button className={`bg-secondary ${buttonTextColor} px-4 py-1.5 rounded-md shadow hover:opacity-90 transition-opacity duration-300 cursor-pointer text-sm md:text-base`}>
-            Anúnciate
-          </button>
+          <button className="bg-accent text-white px-4 py-1.5 rounded-md shadow hover:opacity-90 transition-opacity duration-300 text-sm">Inicia Sesión</button>
+          <button className="bg-secondary text-white px-4 py-1.5 rounded-md shadow hover:opacity-90 transition-opacity duration-300 text-sm">Anúnciate</button>
         </div>
 
-        <button className={`lg:hidden text-3xl transition-transform duration-300 cursor-pointer ${solidBg ? 'text-primary' : 'text-white'}`} onClick={toggleMenu}>
+        <button
+          onClick={toggleMenu}
+          className={`lg:hidden text-3xl ${iconColor} transition-transform duration-300`}
+          aria-label="Abrir menú"
+        >
           {isOpen ? (
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" stroke="currentColor" strokeWidth="2">
               <line x1="18" y1="6" x2="6" y2="18" />
@@ -72,16 +76,16 @@ const Navbar = () => {
 
         <div className={`absolute w-full left-0 transition-all duration-300 bg-white ${isOpen ? 'top-full opacity-100 shadow-lg' : 'top-[-500px] opacity-0 pointer-events-none'}`}>
           <ul className="flex flex-col px-6 text-center text-primary">
-            <li className="py-3 border-b"><Link href="/restaurantes" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Restaurantes</Link></li>
-            <li className="py-2 border-b"><Link href="/alojamientos" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Alojamientos</Link></li>
-            <li className="py-2 border-b"><Link href="/actividades" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Actividades</Link></li>
-            <li className="py-2 border-b"><Link href="/municipios" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Municipios</Link></li>
-            <li className="py-2 border-b"><Link href="/noticias" onClick={toggleMenu} className="cursor-pointer hover:text-secondary transition-colors duration-300">Blog</Link></li>
+            <li className="py-3 border-b"><a href="/restaurantes" onClick={toggleMenu} className="hover:text-secondary transition-colors duration-300">Restaurantes</a></li>
+            <li className="py-2 border-b"><a href="/alojamientos" onClick={toggleMenu} className="hover:text-secondary transition-colors duration-300">Alojamientos</a></li>
+            <li className="py-2 border-b"><a href="/actividades" onClick={toggleMenu} className="hover:text-secondary transition-colors duration-300">Actividades</a></li>
+            <li className="py-2 border-b"><a href="/municipios" onClick={toggleMenu} className="hover:text-secondary transition-colors duration-300">Municipios</a></li>
+            <li className="py-2 border-b"><a href="/noticias" onClick={toggleMenu} className="hover:text-secondary transition-colors duration-300">Blog</a></li>
           </ul>
 
           <div className="flex flex-col gap-3 px-6 py-4 items-center">
-            <button className="bg-accent text-white px-4 py-2 rounded-lg shadow hover:opacity-85 cursor-pointer transition-opacity duration-300 w-[150px]">Inicia Sesión</button>
-            <button className="bg-secondary text-white px-4 py-2 rounded-lg shadow hover:opacity-85 cursor-pointer transition-opacity duration-300 w-[150px]">Anúnciate</button>
+            <button className="bg-accent text-white px-4 py-2 rounded-lg shadow hover:opacity-85 transition-opacity duration-300 w-[150px]">Inicia Sesión</button>
+            <button className="bg-secondary text-white px-4 py-2 rounded-lg shadow hover:opacity-85 transition-opacity duration-300 w-[150px]">Anúnciate</button>
           </div>
         </div>
       </Container>

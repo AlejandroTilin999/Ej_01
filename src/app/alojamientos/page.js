@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import Container from "@/components/ui/Container"
+
 import WifiIcon from '@/assets/icons/WifiIcon'
 import FoodIcon from '@/assets/icons/FoodIcon'
 import LuxuryIcon from '@/assets/icons/LuxuryIcon'
@@ -10,180 +11,18 @@ import HeartIcon from '@/assets/icons/HeartIcon'
 import HeartFilledIcon from '@/assets/icons/HeartFilledIcon'
 import LocationIcon from '@/assets/icons/LocationIcon'
 
-const accommodations = [
-  {
-    name: "Hotel Ocampo",
-    municipio: "Morelia",
-    categoria: "Hotel 4 estrellas",
-    image: "/img/imagesGoMich/mich.webp",
-    descripcion: "Ubicado en el corazón histórico de Morelia, ideal para turistas culturales.",
-    rating: 4.5,
-    internet: true,
-    comida: true,
-    lujo: true,
-    aguaCaliente: true
-  },
-  {
-    name: "Hotel Las Palmas",
-    municipio: "Pátzcuaro",
-    categoria: "Cabañas ecológicas",
-    image: "/img/imagesGoMich/mich.webp",
-    descripcion: "Rodeado de naturaleza, perfecto para una escapada tranquila.",
-    rating: 4.8,
-    internet: false,
-    comida: true,
-    lujo: false,
-    aguaCaliente: true
-  },
-  {
-    name: "Casa Monarca",
-    municipio: "Angangueo",
-    categoria: "Hotel boutique",
-    image: "/img/imagesGoMich/mich.webp",
-    descripcion: "A pocos pasos del santuario de mariposas.",
-    rating: 4.2,
-    internet: true,
-    comida: true,
-    lujo: true,
-    aguaCaliente: true
-  },
-  {
-    name: "Refugio Zirahuén",
-    municipio: "Zirahuén",
-    categoria: "Cabañas familiares",
-    image: "/img/imagesGoMich/mich.webp",
-    descripcion: "Con vista al lago y chimenea incluida.",
-    rating: 4.7,
-    internet: false,
-    comida: true,
-    lujo: false,
-    aguaCaliente: true
-  },
-  {
-    name: "Posada Colonial",
-    municipio: "Tlalpujahua",
-    categoria: "Posada tradicional",
-    image: "/img/imagesGoMich/mich.webp",
-    descripcion: "Ambiente cálido, ideal para conocer el pueblo mágico.",
-    rating: 4.3,
-    internet: true,
-    comida: true,
-    lujo: false,
-    aguaCaliente: true
-  },
-  {
-    name: "EcoHotel Paracho",
-    municipio: "Paracho",
-    categoria: "Eco Hotel",
-    image: "/img/imagesGoMich/mich.webp",
-    descripcion: "Hospédate entre guitarras y tradiciones purépechas.",
-    rating: 4.6,
-    internet: true,
-    comida: true,
-    lujo: true,
-    aguaCaliente: true
-  },
-  {
-    name: "Hotel Vista Mariposa",
-    municipio: "Ocampo",
-    categoria: "Hotel familiar",
-    image: "/img/imagesGoMich/mich.webp",
-    descripcion: "A minutos de los santuarios de mariposas.",
-    rating: 4.4,
-    internet: true,
-    comida: true,
-    lujo: false,
-    aguaCaliente: true
-  },
-  {
-    name: "Casona Encanto",
-    municipio: "Santa Clara del Cobre",
-    categoria: "Hotel boutique",
-    image: "/img/imagesGoMich/mich.webp",
-    descripcion: "Decoración rústica con piezas de cobre artesanales.",
-    rating: 4.9,
-    internet: true,
-    comida: true,
-    lujo: true,
-    aguaCaliente: true
-  },
-  {
-    name: "Hotel Imperial",
-    municipio: "Tacámbaro",
-    categoria: "Hotel 3 estrellas",
-    image: "/img/imagesGoMich/mich.webp",
-    descripcion: "Con alberca, restaurante y centro de negocios.",
-    rating: 4.1,
-    internet: true,
-    comida: true,
-    lujo: false,
-    aguaCaliente: true
-  },
-  {
-    name: "Cabañas El Roble",
-    municipio: "Tzintzuntzan",
-    categoria: "Cabañas privadas",
-    image: "/img/imagesGoMich/mich.webp",
-    descripcion: "Cabañas acogedoras rodeadas de árboles.",
-    rating: 4.5,
-    internet: false,
-    comida: true,
-    lujo: false,
-    aguaCaliente: true
-  },
-  {
-    name: "Hotel Catedral",
-    municipio: "Morelia",
-    categoria: "Hotel 5 estrellas",
-    image: "/img/imagesGoMich/mich.webp",
-    descripcion: "Lujo frente a la catedral de Morelia.",
-    rating: 5.0,
-    internet: true,
-    comida: true,
-    lujo: true,
-    aguaCaliente: true
-  },
-  {
-    name: "Hospedaje Rústico",
-    municipio: "Quiroga",
-    categoria: "Hostal económico",
-    image: "/img/imagesGoMich/mich.webp",
-    descripcion: "Perfecto para mochileros y viajeros prácticos.",
-    rating: 4.0,
-    internet: false,
-    comida: false,
-    lujo: false,
-    aguaCaliente: true
-  }
-]
+import { alojamientos } from "@/data/alojamientos"
+import { useFavorites } from "@/hooks/useFavorites"
+import { sortAlojamientos } from "@/utils/sortAlojamientos"
 
-const municipios = [
-  "Todos", "Morelia", "Pátzcuaro", "Angangueo", "Zirahuén", "Tlalpujahua",
-  "Paracho", "Ocampo", "Santa Clara del Cobre", "Tacámbaro",
-  "Tzintzuntzan", "Quiroga"
-]
-
-function renderStars(rating) {
-  const fullStars = Math.floor(rating)
-  const hasHalf = rating % 1 >= 0.5
-  const emptyStars = 5 - fullStars - (hasHalf ? 1 : 0)
-
-  return (
-    <div className="text-yellow-400 text-sm">
-      {'★'.repeat(fullStars)}
-      {hasHalf && <span className="inline-block w-3">✮</span>}
-      {'☆'.repeat(emptyStars)}
-    </div>
-  )
-}
-
-export default function AccommodationPage() {
+export default function AlojamientosPage() {
   const [search, setSearch] = useState("")
   const [selectedHotel, setSelectedHotel] = useState(null)
-  const [favorites, setFavorites] = useState({})
   const [randomPrices, setRandomPrices] = useState([])
   const [order, setOrder] = useState("Popularidad")
   const [dropdownOpen, setDropdownOpen] = useState(false)
+
+  const { favorites, toggleFavorite, isFavorite } = useFavorites()
   const modalRef = useRef()
 
   useEffect(() => {
@@ -201,36 +40,37 @@ export default function AccommodationPage() {
   }, [selectedHotel])
 
   useEffect(() => {
-    const newPrices = accommodations.map(() => ({
+    const newPrices = alojamientos.map(() => ({
       price: Math.floor(Math.random() * 500) + 400,
       discount: Math.random() < 0.4 ? Math.floor(Math.random() * 30) + 10 : null
     }))
     setRandomPrices(newPrices)
   }, [])
 
-  const sortedHotels = [...accommodations].sort((a, b) => {
-    switch (order) {
-      case "Mejor valorado":
-        return b.rating - a.rating
-      case "Precio (más bajos primero)":
-        return (randomPrices[accommodations.indexOf(a)]?.price || 0) - (randomPrices[accommodations.indexOf(b)]?.price || 0)
-      case "Duración (de menor a mayor)":
-        return a.name.length - b.name.length
-      case "Duración (de mayor a menor)":
-        return b.name.length - a.name.length
-      default:
-        return 0
-    }
-  })
+  const sortedHotels = sortAlojamientos(alojamientos, order, randomPrices)
 
   const filteredHotels = sortedHotels.filter((h) =>
     h.name.toLowerCase().includes(search.toLowerCase())
   )
 
+  const renderStars = (rating) => {
+    const fullStars = Math.floor(rating)
+    const hasHalf = rating % 1 >= 0.5
+    const emptyStars = 5 - fullStars - (hasHalf ? 1 : 0)
+
+    return (
+      <div className="text-yellow-400 text-sm">
+        {'★'.repeat(fullStars)}
+        {hasHalf && <span className="inline-block w-3">✮</span>}
+        {'☆'.repeat(emptyStars)}
+      </div>
+    )
+  }
+
   return (
     <>
       <div className="py-8">
-        <div className="relative w-full h-[220px] md:h-[260px] lg:h-[380px] overflow-hidden ">
+        <div className="relative w-full h-[220px] md:h-[260px] lg:h-[380px] overflow-hidden">
           <img
             src="/img/imagesGoMich/Alojamientos.jpg"
             srcSet="/img/imagesGoMich/Alojamientos.jpg 640w,
@@ -243,67 +83,47 @@ export default function AccommodationPage() {
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-black/50 z-10" />
-
-          <div className="absolute inset-0 z-20 text-white w-full flex flex-col justify-end ">
+          <div className="absolute inset-0 z-20 text-white w-full flex flex-col justify-end">
             <div className="max-w-[1200px] 2xl:max-w-[1440px] mx-auto w-full h-full px-6 md:px-11">
-              {/* HERO CONTENT */}
               <div className="hidden lg:flex flex-col justify-end h-full pb-14">
-                <h1 className="text-6xl font-onest drop-shadow-md mb-10 text-left">
-                  Alojamientos
-                </h1>
+                <h1 className="text-6xl font-onest drop-shadow-md mb-10 text-left">Alojamientos</h1>
                 <div className="grid grid-cols-4 gap-x-8 text-left text-base font-onest">
                   <div>
-                    <p className="text-2xl font-onest">85</p>
+                    <p className="text-2xl">85</p>
                     <p className="opacity-80">alojamientos registrados</p>
                   </div>
                   <div>
-                    <p className="text-2xl font-onest">3,764,122</p>
+                    <p className="text-2xl">3,764,122</p>
                     <p className="opacity-80">viajeros hospedados</p>
                   </div>
                   <div>
-                    <p className="text-2xl font-onest">245,901</p>
+                    <p className="text-2xl">245,901</p>
                     <p className="opacity-80">opiniones verificadas</p>
                   </div>
                   <div>
-                    <p className="text-2xl font-onest">9.3 / 10</p>
+                    <p className="text-2xl">9.3 / 10</p>
                     <p className="opacity-80">nivel de satisfacción</p>
                   </div>
                 </div>
               </div>
 
-              <div className="hidden sm:flex lg:hidden flex-col justify-end h-full pb-10">
-                <h1 className="text-5xl font-onest drop-shadow-md mb-8 text-left">
-                  Alojamientos
-                </h1>
-                <div className="grid grid-cols-4 gap-x-6 text-left text-sm font-onest">
-                  <div className="hidden sm:block">
-                    <p className="text-xl font-onest">85</p>
+              <div className="py-10 lg:hidden flex-col justify-end h-full pb-20 sm:pb-16">
+                <h1 className="text-4xl sm:text-5xl font-bold drop-shadow-md mb-6 sm:mb-8 text-center sm:text-left">Alojamientos</h1>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-3 text-xs sm:text-sm font-onest text-center sm:text-left">
+                  <div>
+                    <p className="text-lg sm:text-xl">85</p>
                     <p className="opacity-80">alojamientos registrados</p>
                   </div>
                   <div>
-                    <p className="text-xl font-onest">3,764,122</p>
+                    <p className="text-lg sm:text-xl">3,764,122</p>
                     <p className="opacity-80">viajeros hospedados</p>
                   </div>
-                  <div className="hidden sm:block">
-                    <p className="text-xl font-onest">245,901</p>
+                  <div>
+                    <p className="text-lg sm:text-xl">245,901</p>
                     <p className="opacity-80">opiniones verificadas</p>
                   </div>
                   <div>
-                    <p className="text-xl font-onest">9.3 / 10</p>
-                    <p className="opacity-80">nivel de satisfacción</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex sm:hidden flex-col justify-end h-full pb-9 text-center ">
-                <h1 className="text-4xl font-onest drop-shadow-md mb-6">Alojamientos</h1>
-                <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-xs font-onest">
-                  <div>
-                    <p className="text-xl font-onest">3,764,122</p>
-                    <p className="opacity-80">viajeros hospedados</p>
-                  </div>
-                  <div>
-                    <p className="text-xl font-onest">9.3 / 10</p>
+                    <p className="text-lg sm:text-xl">9.3 / 10</p>
                     <p className="opacity-80">nivel de satisfacción</p>
                   </div>
                 </div>
@@ -313,7 +133,7 @@ export default function AccommodationPage() {
           </div>
         </div>
       </div>
-      
+
       <Container>
         <div className="mt-6 bg-white rounded-lg shadow px-4 py-3 flex flex-wrap items-center justify-between gap-4">
           <p className="text-gray-700 font-onest text-sm md:text-base">
@@ -394,7 +214,7 @@ export default function AccommodationPage() {
                         [hotel.name]: !isFav
                       }))
                     }}
-                    className="absolute top-2 right-2 bg-white p-1.5 rounded-full shadow-md hover:scale-110 transition"
+                    className="absolute top-2 right-2 bg-white p-1.5 rounded-full shadow-md hover:scale-110 transition cursor-pointer"
                   >
                     {isFav
                       ? <HeartFilledIcon w={20} h={20} fill="#e11d48" />
@@ -419,7 +239,7 @@ export default function AccommodationPage() {
                     <p className="text-xs text-gray-500 mt-1 line-clamp-2">{hotel.descripcion}</p>
                   </div>
 
-                  <div className="flex items-center flex-wrap gap-3 text-xs text-gray-600 mt-3">
+                  <div className="flex items-center flex-wrap gap-3 text-xs text-gray-600 mt-3 ">
                     {hotel.internet && <div className="flex items-center gap-1"><WifiIcon /> Internet</div>}
                     {hotel.comida && <div className="flex items-center gap-1"><FoodIcon /> Comida</div>}
                     {hotel.lujo && <div className="flex items-center gap-1"><LuxuryIcon /> Lujo</div>}
