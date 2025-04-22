@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react"
 import Container from "@/components/ui/Container"
 import "@/styles/hovered-card.css"
+import { eventos } from "@/data/landingpage/eventos"
+
 
 const Eventos = () => {
   const [show, setShow] = useState(false)
@@ -10,13 +12,6 @@ const Eventos = () => {
   useEffect(() => {
     setTimeout(() => setShow(true), 200)
   }, [])
-
-  const eventos = [
-    { src: "/img/imagesGoMich/viejitos.jpg", fecha: "06", mes: "ABR", titulo: "Expo Mariposa", lugar: "Morelia, Mich" },
-    { src: "/img/imagesGoMich/viejitos.jpg", fecha: "15", mes: "MAY", titulo: "Festival", lugar: "Uruapan, Mich" },
-    { src: "/img/imagesGoMich/viejitos.jpg", fecha: "06", mes: "JUN", titulo: "Danza", lugar: "Janitzio, Mich" },
-    { src: "/img/imagesGoMich/viejitos.jpg", fecha: "06", mes: "JUN", titulo: "Danza", lugar: "Janitzio, Mich" }
-  ]
 
   return (
     <section className="py-12 bg-gray-100">

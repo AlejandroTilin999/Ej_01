@@ -2,17 +2,9 @@
 
 import Container from '@/components/ui/Container'
 import { useState } from "react"
+import { destinos } from "@/data/landingpage/topDestinos"
 
 const TopDestinos = () => {
-  const destinos = [
-    { src: "/img/imagesGoMich/Fondo.jpg", titulo: "Morelia - La Ciudad de la Cantera Rosa" },
-    { src: "/img/imagesGoMich/Fondo.webp", titulo: "Pátzcuaro - Cultura y Tradición" },
-    { src: "/img/imagesGoMich/mich.webp", titulo: "Uruapan - Capital Mundial del Aguacate" },
-    { src: "/img/imagesGoMich/Fondo.jpg", titulo: "Janitzio - La Isla del Día de Muertos" },
-    { src: "/img/imagesGoMich/Fondo.webp", titulo: "Zirahuén - El Lago Esmeralda" },
-    { src: "/img/imagesGoMich/mich.webp", titulo: "Tzintzuntzan - Historia y Arqueología" }
-  ]
-
   return (
     <section className="py-12 bg-gray-100">
       <Container>
@@ -31,23 +23,22 @@ const TopDestinos = () => {
                   setTimeout(() => setHovered(false), 1000)
                 }}
                 className={`relative overflow-hidden rounded-xl transition-all duration-500 border border-gray-200 
-        shadow-xl ${hovered ? "shadow-2xl scale-[1.03]" : "group hover:shadow-2xl hover:scale-[1.03]"}`
-                }
+                shadow-xl ${hovered ? "shadow-2xl scale-[1.03]" : "group hover:shadow-2xl hover:scale-[1.03]"}`}
               >
                 <img
                   src={item.src}
                   alt={item.titulo}
                   className={`w-full h-full object-cover transition-transform duration-500 
-          ${hovered ? "scale-110 blur-sm" : "group-hover:scale-110 group-hover:blur-sm"}`}
+                    ${hovered ? "scale-110 blur-sm" : "group-hover:scale-110 group-hover:blur-sm"}`}
                 />
 
                 <div
                   className={`absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent transition-opacity duration-500 flex flex-col items-center justify-end pb-6 cursor-pointer 
-          ${hovered ? "opacity-100" : "group-hover:opacity-100 opacity-0"}`}
+                    ${hovered ? "opacity-100" : "group-hover:opacity-100 opacity-0"}`}
                 >
                   <h3
                     className={`text-white text-lg md:text-xl font-onest text-center px-6 transition-all duration-500 
-            ${hovered ? "translate-y-0 scale-110" : "translate-y-10 group-hover:translate-y-0 group-hover:scale-110"}`}
+                      ${hovered ? "translate-y-0 scale-110" : "translate-y-10 group-hover:translate-y-0 group-hover:scale-110"}`}
                   >
                     {item.titulo}
                   </h3>
