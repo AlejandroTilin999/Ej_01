@@ -51,8 +51,12 @@ const Navbar = () => {
         </ul>
 
         <div className="hidden lg:flex items-center gap-3">
-          <button className="bg-accent text-white px-4 py-1.5 rounded-md shadow hover:opacity-90 transition-opacity duration-300 text-sm">Inicia Sesión</button>
-          <button className="bg-secondary text-white px-4 py-1.5 rounded-md shadow hover:opacity-90 transition-opacity duration-300 text-sm">Anúnciate</button>
+          <a href="/login">
+            <button className="bg-accent text-white px-4 py-1.5 rounded-md shadow hover:opacity-90 transition-opacity duration-300 text-sm cursor-pointer">Inicia Sesión</button>
+          </a>
+          <a href="/anunciate">
+            <button className="bg-secondary text-white px-4 py-1.5 rounded-md shadow hover:opacity-90 transition-opacity duration-300 text-sm cursor-pointer">Anúnciate</button>
+          </a>
         </div>
 
         <button
@@ -84,8 +88,12 @@ const Navbar = () => {
           </ul>
 
           <div className="flex flex-col gap-3 px-6 py-4 items-center">
-            <button className="bg-accent text-white px-4 py-2 rounded-lg shadow hover:opacity-85 transition-opacity duration-300 w-[150px]">Inicia Sesión</button>
-            <button className="bg-secondary text-white px-4 py-2 rounded-lg shadow hover:opacity-85 transition-opacity duration-300 w-[150px]">Anúnciate</button>
+            <a href="/login" className="w-full">
+              <button className="bg-accent text-white px-4 py-2 rounded-lg shadow hover:opacity-85 transition-opacity duration-300 w-[150px] cursor-pointer">Inicia Sesión</button>
+            </a>
+            <a href="/anunciate" className="w-full">
+              <button className="bg-secondary text-white px-4 py-2 rounded-lg shadow hover:opacity-85 transition-opacity duration-300 w-[150px] cursor-pointer">Anúnciate</button>
+            </a>
           </div>
         </div>
       </Container>

@@ -26,9 +26,11 @@ const SesionPreFooter = () => {
         </div>
 
         <div className="mt-2 md:mt-0">
-          <button className="bg-accent text-white px-6 py-3 rounded-full shadow-md hover:opacity-98 transition-all duration-300 text-sm sm:text-base font-onest cursor-pointer">
-            Únete con nosotros
-          </button>
+          <a href="/contacto">
+            <button className="bg-accent text-white px-6 py-3 rounded-full shadow-md hover:opacity-98 transition-all duration-300 text-sm sm:text-base font-onest cursor-pointer">
+              Únete con nosotros
+            </button>
+          </a>
         </div>
 
       </div>

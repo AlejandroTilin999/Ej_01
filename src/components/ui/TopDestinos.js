@@ -16,14 +16,15 @@ const TopDestinos = () => {
             const [hovered, setHovered] = useState(false)
 
             return (
-              <div
+              <a
                 key={index}
+                href={`/destinos/${item.titulo.toLowerCase().replaceAll(" ", "-")}`}
                 onTouchStart={() => {
                   setHovered(true)
                   setTimeout(() => setHovered(false), 1000)
                 }}
                 className={`relative overflow-hidden rounded-xl transition-all duration-500 border border-gray-200 
-                shadow-xl ${hovered ? "shadow-2xl scale-[1.03]" : "group hover:shadow-2xl hover:scale-[1.03]"}`}
+                  shadow-xl ${hovered ? "shadow-2xl scale-[1.03]" : "group hover:shadow-2xl hover:scale-[1.03]"}`}
               >
                 <img
                   src={item.src}
@@ -43,7 +44,7 @@ const TopDestinos = () => {
                     {item.titulo}
                   </h3>
                 </div>
-              </div>
+              </a>
             )
           })}
         </div>

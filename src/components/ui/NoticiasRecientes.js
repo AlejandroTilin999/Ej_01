@@ -3,7 +3,6 @@
 import Container from "@/components/ui/Container"
 import { noticias } from "@/data/landingpage/noticias"
 
-
 const getCategoryColor = (category) => {
   switch (category) {
     case "TURISMO":
@@ -26,10 +25,12 @@ const NoticiasRecientes = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {noticias.map((noticia, index) => (
-            <div
+            <a
               key={index}
-              className={`relative rounded-xl overflow-hidden group cursor-pointer transition-all duration-300 
+              href={`/noticias/${noticia.titulo.toLowerCase().replaceAll(" ", "-")}`}
+              className={`block relative rounded-xl overflow-hidden group cursor-pointer transition-all duration-300 
                 ${index === 2 ? "lg:col-span-2 h-[250px] lg:order-last" : "h-[250px]"}`}
+              title={`Leer: ${noticia.titulo}`}
               onTouchStart={(e) => {
                 const target = e.currentTarget
                 if (target && target.classList) {
@@ -64,7 +65,7 @@ const NoticiasRecientes = () => {
                   {noticia.descripcion}
                 </p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </Container>

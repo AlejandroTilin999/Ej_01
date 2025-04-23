@@ -4,7 +4,6 @@ import { useState } from "react"
 import Container from "@/components/ui/Container"
 import { galeria } from "@/data/landingpage/galeria"
 
-
 const Galeria = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null)
 
@@ -25,8 +24,9 @@ const Galeria = () => {
           {galeria.map((item, index) => {
             const isTouched = hoveredIndex === index
             return (
-              <div
+              <a
                 key={index}
+                href={`/destinos/${item.titulo.toLowerCase().replaceAll(" ", "-")}`}
                 onTouchStart={() => handleTouch(index)}
                 className={`relative overflow-hidden rounded-lg transition-all duration-500 shadow-sm cursor-pointer 
                   ${isTouched ? "scale-105" : "group hover:scale-105"}`}
@@ -43,7 +43,7 @@ const Galeria = () => {
                 >
                   {item.titulo}
                 </div>
-              </div>
+              </a>
             )
           })}
         </div>

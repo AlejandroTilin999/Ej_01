@@ -253,9 +253,12 @@ const RestaurantsPage = () => {
                     <div className="text-sm text-primary font-onest">
                       Desde <span className="text-lg">${price}</span> MXN
                     </div>
-                    <button className="bg-secondary text-white text-xs px-4 py-2 rounded-full hover:bg-secondary/90 transition cursor-pointer">
+                    <a
+                      href={`/restaurantes/${rest.slug || i}`}
+                      className="bg-secondary text-white text-xs px-4 py-2 rounded-full hover:bg-secondary/90 transition cursor-pointer"
+                    >
                       Reservar
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

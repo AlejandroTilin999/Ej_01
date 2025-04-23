@@ -5,7 +5,6 @@ import Container from "@/components/ui/Container"
 import "@/styles/hovered-card.css"
 import { eventos } from "@/data/landingpage/eventos"
 
-
 const Eventos = () => {
   const [show, setShow] = useState(false)
 
@@ -30,7 +29,7 @@ const Eventos = () => {
                 setTimeout(() => {
                   target.classList.remove('hovered-card')
                 }, 400)
-              }}              
+              }}
             >
               <img
                 src={evento.src}
@@ -46,9 +45,12 @@ const Eventos = () => {
                 <h3 className="text-lg font-onest mt-2">{evento.titulo}</h3>
                 <p className="text-gray-600 text-sm">{evento.lugar}</p>
 
-                <button className="mt-4 px-6 py-2 bg-accent text-white rounded-lg text-sm font-onest hover:opacity-85 transition-all w-auto mx-auto md:w-full md:mx-0 cursor-pointer">
+                <a
+                  href={`/eventos/${evento.titulo.toLowerCase().replaceAll(" ", "-")}`}
+                  className="mt-4 inline-block px-6 py-2 bg-accent text-white rounded-lg text-sm font-onest hover:opacity-85 transition-all cursor-pointer text-center w-auto mx-auto md:w-full md:mx-0"
+                >
                   Ver más
-                </button>
+                </a>
               </div>
             </div>
           ))}
