@@ -9,15 +9,13 @@ import "@/styles/carrousel.css"
 
 import Container from '@/components/ui/Container'
 import { pueblos } from "@/data/landingpage/pueblosMagicos"
+import SectionTitle from '@/components/ui/SectionTitle'
 
 const PueblosMagicos = () => {
   return (
     <section className="py-12 bg-gray-100">
       <Container>
-        <h2 className="text-3xl font-onest text-gray-800 mb-4">
-          Pueblos Mágicos, experiencias únicas
-        </h2>
-        <div className="w-50 h-[5px] bg-secondary mb-6"></div>
+        <SectionTitle text="Pueblos Mágicos, experiencias únicas" color="accent" margin="mb-4" />
 
         <Swiper
           modules={[Navigation]}

@@ -1,11 +1,11 @@
-import HeroSection from "@/components/ui/HeroSection"
-import Novedades from "@/components/ui/Novedades"
-import TopDestinos from "@/components/ui/TopDestinos.js"
-import Eventos from "@/components/ui/Eventos"
-import PueblosMagicos from "@/components/ui/PueblosMagicos"
-import NoticiasRecientes from "@/components/ui/NoticiasRecientes"
-import Galeria from "@/components/ui/Galeria"
-import SesionPreFooter from "@/components/ui/SesionPreFooter"
+import HeroSection from "@/sessions/HeroSection"
+import Novedades from "@/sessions/Novedades"
+import TopDestinos from "@/sessions/TopDestinos"
+import Eventos from "@/sessions/Eventos"
+import PueblosMagicos from "@/sessions/PueblosMagicos"
+import NoticiasRecientes from "@/sessions/NoticiasRecientes"
+import Galeria from "@/sessions/Galeria"
+import SesionPreFooter from "@/sessions/SesionPreFooter"
 
 export default function Home() {
   return (

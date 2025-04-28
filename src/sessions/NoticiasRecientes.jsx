@@ -2,6 +2,7 @@
 
 import Container from "@/components/ui/Container"
 import { noticias } from "@/data/landingpage/noticias"
+import SectionTitle from '@/components/ui/SectionTitle'
 
 const getCategoryColor = (category) => {
   switch (category) {
@@ -20,8 +21,7 @@ const NoticiasRecientes = () => {
   return (
     <section className="py-12 bg-gray-100">
       <Container>
-        <h2 className="text-3xl font-onest text-gray-800 mb-4">Noticias más recientes</h2>
-        <div className="w-50 h-[5px] bg-accent mb-6"></div>
+        <SectionTitle text="Noticias Recientes" color="secondary" margin="mb-2 md:mb-4" />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {noticias.map((noticia, index) => (

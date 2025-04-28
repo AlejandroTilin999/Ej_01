@@ -2,15 +2,8 @@
 
 import { useState, useRef, useEffect } from "react"
 import Container from "@/components/ui/Container"
-
-import WifiIcon from '@/assets/icons/WifiIcon'
-import FoodIcon from '@/assets/icons/FoodIcon'
-import LuxuryIcon from '@/assets/icons/LuxuryIcon'
-import HotWaterIcon from '@/assets/icons/HotWaterIcon'
-import HeartIcon from '@/assets/icons/HeartIcon'
-import HeartFilledIcon from '@/assets/icons/HeartFilledIcon'
-import LocationIcon from '@/assets/icons/LocationIcon'
 import Button from '@/components/ui/Button'
+import CardAlojamiento from '@/components/ui/CardAlojamiento'
 
 import { alojamientos } from "@/data/alojamientos"
 import { useFavorites } from "@/hooks/useFavorites"
@@ -23,7 +16,7 @@ export default function AlojamientosPage() {
   const [order, setOrder] = useState("Popularidad")
   const [dropdownOpen, setDropdownOpen] = useState(false)
 
-  const { favorites, toggleFavorite, isFavorite } = useFavorites()
+  const { favorites, toggleFavorite } = useFavorites()
   const modalRef = useRef()
 
   useEffect(() => {
@@ -66,9 +59,9 @@ export default function AlojamientosPage() {
 
     return (
       <div className="text-yellow-400 text-sm">
-        {'★'.repeat(fullStars)}
-        {hasHalf && <span className="inline-block w-3">✮</span>}
-        {'☆'.repeat(emptyStars)}
+        {'\u2605'.repeat(fullStars)}
+        {hasHalf && <span className="inline-block w-3">\u272E</span>}
+        {'\u2606'.repeat(emptyStars)}
       </div>
     )
   }
@@ -79,12 +72,8 @@ export default function AlojamientosPage() {
         <div className="relative w-full h-[220px] md:h-[260px] lg:h-[380px] overflow-hidden">
           <img
             src="/img/imagesGoMich/Alojamientos.jpg"
-            srcSet="/img/imagesGoMich/Alojamientos.jpg 640w,
-              /img/imagesGoMich/Alojamientos.jpg 1024w,
-              /img/imagesGoMich/Alojamientos.jpg 1600w"
-            sizes="(max-width: 768px) 100vw,
-              (max-width: 1024px) 100vw,
-              100vw"
+            srcSet="/img/imagesGoMich/Alojamientos.jpg 640w, /img/imagesGoMich/Alojamientos.jpg 1024w, /img/imagesGoMich/Alojamientos.jpg 1600w"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 100vw"
             alt="Alojamientos en Michoacán"
             className="w-full h-full object-cover object-center"
           />
@@ -100,7 +89,6 @@ export default function AlojamientosPage() {
                   <div><p className="text-2xl">9.3 / 10</p><p className="opacity-80">nivel de satisfacción</p></div>
                 </div>
               </div>
-
               <div className="py-10 lg:hidden flex-col justify-end h-full pb-20 sm:pb-16">
                 <h1 className="text-4xl sm:text-5xl font-bold drop-shadow-md mb-6 sm:mb-8 text-center sm:text-left">Alojamientos</h1>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-3 text-xs sm:text-sm font-onest text-center sm:text-left">
@@ -110,7 +98,6 @@ export default function AlojamientosPage() {
                   <div><p className="text-lg sm:text-xl">9.3 / 10</p><p className="opacity-80">nivel de satisfacción</p></div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -151,55 +138,16 @@ export default function AlojamientosPage() {
             const discount = randomPrices[i]?.discount
 
             return (
-              <a href={`/alojamientos/${hotel.slug || i}`} key={i} className="block group">
-                <div className="bg-white rounded-2xl shadow-md hover:shadow-xl border border-gray-100 overflow-hidden relative flex flex-col transition-all duration-300 transform hover:scale-105 active:scale-105 focus:scale-105 min-h-[480px]">
-                  <div className="relative w-full h-44 overflow-hidden">
-                    <img src={hotel.image} alt={hotel.name} className="w-full h-full object-cover transform transition duration-300 group-hover:scale-105" />
-                    {discount && (
-                      <div className="absolute top-2 left-2 bg-green-500 text-white text-xs font-onest px-2 py-1 rounded-full shadow">
-                        {discount}% OFF
-                      </div>
-                    )}
-                    <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(hotel.name) }} className="absolute top-2 right-2 bg-white p-1.5 rounded-full shadow-md hover:scale-110 transition">
-                      {isFav ? <HeartFilledIcon w={20} h={20} fill="#e11d48" /> : <HeartIcon w={20} h={20} stroke="#666" />}
-                    </button>
-                  </div>
-                  <div className="p-4 text-left flex flex-col justify-between flex-grow">
-                    <div>
-                      <h3 className="text-lg font-bold text-primary leading-snug">{hotel.name}</h3>
-                      <div className="flex items-center gap-2 text-yellow-400 text-sm">{renderStars(hotel.rating)}<span className="text-gray-500 text-xs">({hotel.rating.toFixed(1)})</span></div>
-                      <p className="text-sm text-gray-600 font-onest flex items-center gap-1"><LocationIcon className="w-5 h-5 text-accent" />{hotel.municipio}</p>
-                      <p className="text-xs text-gray-400 italic">{hotel.categoria}</p>
-                      <p className="text-xs text-gray-500 mt-1 line-clamp-2">{hotel.descripcion}</p>
-                    </div>
-                    <div className="flex items-center flex-wrap gap-3 text-xs text-gray-600 mt-3">
-                      {hotel.internet && <div className="flex items-center gap-1"><WifiIcon /> Internet</div>}
-                      {hotel.comida && <div className="flex items-center gap-1"><FoodIcon /> Comida</div>}
-                      {hotel.lujo && <div className="flex items-center gap-1"><LuxuryIcon /> Lujo</div>}
-                      {hotel.aguaCaliente && <div className="flex items-center gap-1"><HotWaterIcon /> Agua caliente</div>}
-                    </div>
-                    <div className="mt-4 flex justify-between items-center">
-                      <div className="text-sm text-primary font-onest">
-                        Desde <span className="text-lg">${hotelPrice}</span> MXN
-                      </div>
-
-                      <Button
-                        text="Ver disponibilidad"
-                        variant="accent"
-                        size="sm"
-                        full={false}
-                        center={false}
-                        onClick={(e) => {
-                          e.preventDefault()
-                          setSelectedHotel(hotel)
-                        }}
-                      />
-
-                    </div>
-
-                  </div>
-                </div>
-              </a>
+              <CardAlojamiento
+                key={i}
+                hotel={hotel}
+                isFav={isFav}
+                toggleFavorite={toggleFavorite}
+                hotelPrice={hotelPrice}
+                discount={discount}
+                setSelectedHotel={setSelectedHotel}
+                renderStars={renderStars}
+              />
             )
           })}
         </div>
