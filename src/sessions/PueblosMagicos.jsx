@@ -5,17 +5,26 @@ import { Navigation } from 'swiper/modules'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
-import "@/styles/carrousel.css"
+import '@/styles/carrousel.css'
 
 import Container from '@/components/ui/Container'
-import { pueblos } from "@/data/landingpage/pueblosMagicos"
+import { pueblos } from '@/data/landingpage/pueblosMagicos'
 import SectionTitle from '@/components/ui/SectionTitle'
+import Button from '@/components/ui/Button'
 
 const PueblosMagicos = () => {
   return (
     <section className="py-12 bg-gray-100">
       <Container>
-        <SectionTitle text="Pueblos Mágicos, experiencias únicas" color="accent" margin="mb-4" />
+        <div className="flex items-center justify-between mb-4">
+          <SectionTitle text="Pueblos Mágicos, experiencias únicas" color="accent" margin="mb-0" />
+          <Button
+            href="/pueblos-magicos"
+            text="Ver más"
+            variant="accent"
+            size="sm"
+          />
+        </div>
 
         <Swiper
           modules={[Navigation]}
@@ -31,7 +40,11 @@ const PueblosMagicos = () => {
         >
           {pueblos.map((item, index) => (
             <SwiperSlide key={index}>
-              <a href={`/municipios/${item.titulo.toLowerCase()}`} className="block" title={`Ir a ${item.titulo}`}>
+              <a
+                href={`/municipios/${item.titulo.toLowerCase()}`}
+                className="block"
+                title={`Ir a ${item.titulo}`}
+              >
                 <div
                   className="relative overflow-hidden rounded-xl shadow-md group cursor-pointer"
                   onTouchStart={(e) => {
@@ -49,7 +62,7 @@ const PueblosMagicos = () => {
                     alt={item.titulo}
                     className="w-full h-[280px] sm:h-[300px] lg:h-[320px] object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-black/70 to-transparent"></div>
+                  <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-4 left-4 text-white">
                     <h3 className="text-lg font-onest">{item.titulo}</h3>
                     <p className="text-sm opacity-80">{item.descripcion}</p>

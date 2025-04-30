@@ -42,7 +42,7 @@ const Footer = () => {
           <ul className="space-y-1 text-sm">
             <li><a href="/restaurantes" className="hover:text-gray-300 cursor-pointer">Restaurantes</a></li>
             <li><a href="/alojamientos" className="hover:text-gray-300 cursor-pointer">Alojamientos</a></li>
-            <li><a href="/actividades" className="hover:text-gray-300 cursor-pointer">Actividades</a></li>
+            <li><a href="/eventos" className="hover:text-gray-300 cursor-pointer">Eventos</a></li>
             <li><a href="/municipios" className="hover:text-gray-300 cursor-pointer">Municipios</a></li>
             <li><a href="/noticias" className="hover:text-gray-300 cursor-pointer">Blog</a></li>
           </ul>
@@ -53,7 +53,7 @@ const Footer = () => {
           <ul className="space-y-1 text-sm">
             <li><a href="/restaurantes" className="hover:text-gray-300 cursor-pointer">Restaurantes</a></li>
             <li><a href="/alojamientos" className="hover:text-gray-300 cursor-pointer">Alojamientos</a></li>
-            <li><a href="/actividades" className="hover:text-gray-300 cursor-pointer">Actividades</a></li>
+            <li><a href="/eventos" className="hover:text-gray-300 cursor-pointer">Eventos</a></li>
             <li><a href="/municipios" className="hover:text-gray-300 cursor-pointer">Municipios</a></li>
             <li><a href="/noticias" className="hover:text-gray-300 cursor-pointer">Blog</a></li>
           </ul>

@@ -2,17 +2,17 @@
 const municipios = [
     {
       nombre: 'Morelia',
-      imagenFondo: '/img/imagesGoMich/viejitos.jpg',
+      imagenFondo: '/img/imagesGoMich/morelia.webp',
       icono: '/img/imagesGoMich/viejitos.jpg'
     },
     {
       nombre: 'Pátzcuaro',
-      imagenFondo: '/img/imagesGoMich/Bosque.jpg',
+      oimagenFondo: '/img/imagesGoMich/patzcuaro.webp',
       icono: '/img/imagesGoMich/Bosque.jpg'
     },
     {
       nombre: 'Uruapan',
-      imagenFondo: '/img/imagesGoMich/Fondo.jpg',
+      imagenFondo: '/img/imagesGoMich/uruapan.webp',
       icono: '/img/imagesGoMich/Fondo.jpg'
     },
     {
@@ -22,7 +22,7 @@ const municipios = [
     },
     {
       nombre: 'Tzintzuntzan',
-      imagenFondo: '/img/imagesGoMich/Restaurante.jpg',
+      imagenFondo: '/img/imagesGoMich/tzintzuntzan.jpg',
       icono: '/img/imagesGoMich/Restaurante.jpg'
     },
     {
