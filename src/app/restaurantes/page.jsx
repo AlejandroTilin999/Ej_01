@@ -26,6 +26,7 @@ import restaurantes from '@/data/restaurantes'
 import { useFavorites } from '@/hooks/useFavorites'
 import { sortRestaurants } from '@/utils/sortRestaurants'
 
+
 const IconList = ({ rest }) => {
   const icons = [
     { icon: <FoodIcon />, label: 'Tradicional', show: rest.tradicional },
@@ -59,6 +60,18 @@ const IconList = ({ rest }) => {
 }
 
 const RestaurantsPage = () => {
+  const habilitado = false
+
+  if (!habilitado) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100 text-center px-6">
+        <div className="bg-white rounded-xl shadow-xl p-10 max-w-md w-full">
+          <h1 className="text-2xl font-bold text-primary mb-4">📌 Próximamente</h1>
+          <p className="text-gray-600">Esta sección estará próximamente disponible. Gracias por tu paciencia.</p>
+        </div>
+      </div>
+    )
+  }
   const [search, setSearch] = useState('')
   const [randomPrices, setRandomPrices] = useState([])
   const [order, setOrder] = useState("Popularidad")

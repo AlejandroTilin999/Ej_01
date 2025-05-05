@@ -25,13 +25,13 @@ const Footer = () => {
           </p>
           <p className="font-onest mt-4">Síguenos</p>
           <div className="flex justify-center md:justify-start gap-4 text-lg mt-2">
-            <a href="#" className="hover:text-gray-300 cursor-pointer">
+            <a href="https://www.facebook.com/gomichoacan" className="hover:text-gray-300 cursor-pointer">
               <FacebookIcon stroke="#fff" />
             </a>
-            <a href="#" className="hover:text-gray-300 cursor-pointer">
+            <a href="https://www.instagram.com/gomichoacan/?fbclid=IwY2xjawKFCDJleHRuA2FlbQIxMABicmlkETBYNkNIbklRR0FZUkdEQ2pLAR7avc720oukrJcUSnjPvun7ZYwv5a1ZjSw4u-QxmN36X-HGVLYU3B2DU_-eFg_aem_0aoN7jhdHUaVzoEcNqCfbw#" className="hover:text-gray-300 cursor-pointer">
               <InstagramIcon stroke="#fff" />
             </a>
-            <a href="#" className="hover:text-gray-300 cursor-pointer">
+            <a href="https://www.tiktok.com/@gomichoacan" className="hover:text-gray-300 cursor-pointer">
               <TiktokIcon stroke="#fff" />
             </a>
           </div>
@@ -44,7 +44,7 @@ const Footer = () => {
             <li><a href="/alojamientos" className="hover:text-gray-300 cursor-pointer">Alojamientos</a></li>
             <li><a href="/eventos" className="hover:text-gray-300 cursor-pointer">Eventos</a></li>
             <li><a href="/municipios" className="hover:text-gray-300 cursor-pointer">Municipios</a></li>
-            <li><a href="/noticias" className="hover:text-gray-300 cursor-pointer">Blog</a></li>
+            <li><a href="/noticias" className="hover:text-gray-300 cursor-pointer">Noticias</a></li>
           </ul>
         </div>
 
@@ -55,20 +55,20 @@ const Footer = () => {
             <li><a href="/alojamientos" className="hover:text-gray-300 cursor-pointer">Alojamientos</a></li>
             <li><a href="/eventos" className="hover:text-gray-300 cursor-pointer">Eventos</a></li>
             <li><a href="/municipios" className="hover:text-gray-300 cursor-pointer">Municipios</a></li>
-            <li><a href="/noticias" className="hover:text-gray-300 cursor-pointer">Blog</a></li>
+            <li><a href="/noticias" className="hover:text-gray-300 cursor-pointer">Noticias</a></li>
           </ul>
         </div>
 
         <div>
           <p className="font-onest mb-2">Contacto</p>
           <div className="text-sm flex flex-col items-center md:items-start gap-2">
-            <a href="tel:+520000000" className="flex items-center gap-2 hover:text-gray-300 transition">
+            <a href="tel:+52786 105 4198" className="flex items-center gap-2 hover:text-gray-300 transition">
               <PhoneIcon stroke="#fff" />
-              +52 000 0000
+              +52 786 105 4198
             </a>
-            <a href="mailto:gomich@gmail.com" className="flex items-center gap-2 hover:text-gray-300 transition">
+            <a href="mailto:hola@eurekabrain.com.mx" className="flex items-center gap-2 hover:text-gray-300 transition">
               <MailIcon stroke="#fff" />
-              gomich@gmail.com
+              hola@eurekabrain.com.mx
             </a>
           </div>
         </div>

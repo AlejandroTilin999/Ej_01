@@ -8,10 +8,9 @@ import NoticiaCard from '@/components/ui/NoticiaCard'
 
 const Noticias = () => {
   const [order, setOrder] = useState("Novedad")
-  const [categoria, setCategoria] = useState("Todas")
   const [dropdownOpen, setDropdownOpen] = useState(false)
 
-  const sortedNoticias = sortNoticias(noticias, categoria, order)
+  const sortedNoticias = sortNoticias(noticias, "Todas", order)
 
   return (
     <>
@@ -47,55 +46,29 @@ const Noticias = () => {
       <Container>
         <div className="mt-6 bg-white rounded-lg shadow px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-gray-700 font-onest text-sm md:text-base">{sortedNoticias.length} noticias encontradas</p>
-          <div className="flex gap-2 items-center flex-wrap justify-center sm:justify-start cursor-pointer">
-            <div className="relative">
-              <button
-                onClick={() => setDropdownOpen(c => ({ categoria: !c.categoria, ordenar: false }))}
-                className="border rounded-full px-4 py-1 text-sm font-onest bg-white shadow hover:bg-gray-50 cursor-pointer"
-              >
-                Categorías
-              </button>
-              {dropdownOpen?.categoria && (
-                <div className="absolute left-0 mt-2 w-40 bg-white rounded-lg shadow-lg text-sm font-onest z-50">
-                  {["Todas", "Turismo", "Cultura", "Tradiciones", "Destacada", "Último momento"].map(cat => (
-                    <div
-                      key={cat}
-                      onClick={() => {
-                        setCategoria(cat)
-                        setDropdownOpen({ categoria: false, ordenar: false })
-                      }}
-                      className={`px-4 py-2 hover:bg-gray-100 cursor-pointer ${categoria === cat ? 'font-bold text-primary' : ''}`}
-                    >
-                      {cat}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-            <div className="relative">
-              <button
-                onClick={() => setDropdownOpen(c => ({ categoria: false, ordenar: !c.ordenar }))}
-                className="border rounded-full px-4 py-1 text-sm font-onest bg-white shadow hover:bg-gray-50 cursor-pointer"
-              >
-                Ordenar
-              </button>
-              {dropdownOpen?.ordenar && (
-                <div className="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg text-sm font-onest z-50">
-                  {["Novedad", "A-Z", "Antiguas primero"].map((option, idx) => (
-                    <div
-                      key={idx}
-                      onClick={() => {
-                        setOrder(option)
-                        setDropdownOpen({ categoria: false, ordenar: false })
-                      }}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                    >
-                      {option}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+          <div className="relative">
+            <button
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="border rounded-full px-4 py-1 text-sm font-onest bg-white shadow hover:bg-gray-50 cursor-pointer"
+            >
+              Ordenar
+            </button>
+            {dropdownOpen && (
+              <div className="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg text-sm font-onest z-50">
+                {["Novedad", "Antiguas primero"].map((option, idx) => (
+                  <div
+                    key={idx}
+                    onClick={() => {
+                      setOrder(option)
+                      setDropdownOpen(false)
+                    }}
+                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </Container>

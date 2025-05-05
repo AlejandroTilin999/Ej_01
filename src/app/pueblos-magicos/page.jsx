@@ -1,10 +1,13 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import Container from '@/components/ui/Container'
-import Button from '@/components/ui/Button'
 import { pueblosMagicos } from '@/data/pueblosMagicos'
+import Button from '@/components/ui/Button'
 
 const PueblosPage = () => {
+  const router = useRouter()
+
   return (
     <>
       <section className="py-8">
@@ -50,27 +53,18 @@ const PueblosPage = () => {
               return (
                 <div
                   key={index}
-                  className={`relative rounded-2xl overflow-hidden group transition-shadow duration-300 hover:shadow-xl bg-white ${spanClass}`}
+                  onClick={() => router.push(`/pueblos-magicos/${pueblo.slug}`)}
+                  className={`relative rounded-2xl overflow-hidden group transition-shadow duration-300 hover:shadow-xl bg-white cursor-pointer ${spanClass}`}
                 >
                   <img
                     src={pueblo.imagen}
                     alt={pueblo.nombre}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent z-10 flex items-end">
                     <div className="text-white p-4 z-20">
                       <h3 className="text-lg md:text-2xl font-bold mb-1 line-clamp-2">{pueblo.nombre}</h3>
                       <p className="text-sm md:text-base opacity-90 line-clamp-3">{pueblo.descripcion}</p>
-                      <Button
-                        href={`/pueblos/${pueblo.nombre.toLowerCase().replaceAll(' ', '-')}`}
-                        text="Descubrir"
-                        variant="accent"
-                        size="sm"
-                        full={false}
-                        center={false}
-                        className="mt-4"
-                      />
                     </div>
                   </div>
                 </div>

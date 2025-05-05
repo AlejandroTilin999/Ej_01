@@ -3,6 +3,18 @@
 import Container from '@/components/ui/Container'
 
 const Actividades = () => {
+  const habilitado = false
+
+  if (!habilitado) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100 text-center px-6">
+        <div className="bg-white rounded-xl shadow-xl p-10 max-w-md w-full">
+          <h1 className="text-2xl font-bold text-primary mb-4">📌 Próximamente</h1>
+          <p className="text-gray-600">Esta sección estará próximamente disponible. Gracias por tu paciencia.</p>
+        </div>
+      </div>
+    )
+  }
   return (
     <>
       <div className="py-8">
