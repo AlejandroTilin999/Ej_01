@@ -17,6 +17,7 @@ const Navbar = () => {
     '/actividades',
     '/pueblos-magicos',
     '/municipios',
+    '/admin',
     '/@'
   ].some(path => pathname.startsWith(path))
 

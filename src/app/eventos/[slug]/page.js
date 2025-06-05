@@ -143,10 +143,7 @@ const EventoDetallePage = () => {
             </div>
             <p className="text-sm text-gray-700 mt-4">{evento.infoMapa}</p>
 
-            <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">Redes sociales</h3>
-            <p className="flex items-center gap-2 text-sm text-primary underline cursor-pointer"><FacebookIcon className="w-4 h-4" />facebook.com/{evento.redSocialFacebook}</p>
-            <p className="flex items-center gap-2 text-sm text-primary underline cursor-pointer"><InstagramIcon className="w-4 h-4" />instagram.com/{evento.redSocialInstagram}</p>
-            <p className="flex items-center gap-2 text-sm text-primary underline cursor-pointer"><TiktokIcon className="w-4 h-4" />tiktok.com/@{evento.redSocialTikTok}</p>
+            
           </div>
         </div>
       </Container>

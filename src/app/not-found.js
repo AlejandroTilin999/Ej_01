@@ -12,7 +12,7 @@ export default function NotFound() {
         alt="Página no encontrada"
         width={600}
         height={400}
-        className="mb-8 max-w-full h-auto"
+        className="mb-8 w-64 md:w-80 lg:w-96 h-auto"
       />
       <h1 className="text-4xl font-bold text-gray-800 mb-2">¡Oops! Página no encontrada</h1>
       <p className="text-gray-600 mb-6">Lo sentimos, no pudimos encontrar la página que estás buscando.</p>
