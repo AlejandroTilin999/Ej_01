@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import Container from '@/components/ui/Container'
 import { applyNavbarScrollEffect } from '@/utils/scrollHandler'
 import Button from '@/components/ui/Button'
+import Experiencia from '@/app/modals/experincia'
 
 const Navbar = () => {
   const pathname = usePathname()
@@ -71,18 +72,8 @@ const Navbar = () => {
               Próximamente
             </div>
           </div>
-          <div className="relative group">
-            <Button
-              href=""
-              text="Anúnciate"
-              variant="secondary"
-              size="sm"
-              className="pointer-events-none opacity-60 cursor-not-allowed"
-            />
-            <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 bg-white text-sm text-gray-700 px-3 py-2 rounded-xl shadow-lg opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 z-50">
-              <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rotate-45 shadow-sm" />
-              Próximamente
-            </div>
+          <div className="relative group">       {/*apartdo del boton de experinecia */}
+            <Experiencia></Experiencia>
           </div>
         </div>
 
