@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import Container from '@/components/ui/Container'
 import { applyNavbarScrollEffect } from '@/utils/scrollHandler'
 import Button from '@/components/ui/Button'
-import Experiencia from '@/app/modals/experincia'
+// import Experiencia from '@/app/modals/experincia'
 
 const Navbar = () => {
   const pathname = usePathname()
@@ -73,7 +73,7 @@ const Navbar = () => {
             </div>
           </div>
           <div className="relative group">       {/*apartdo del boton de experinecia */}
-            <Experiencia></Experiencia>
+            {/* <Experiencia></Experiencia> */}
           </div>
         </div>
 
